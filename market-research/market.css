@@ -1,0 +1,26 @@
+
+div {
+    font-family:Arial,Helvetica,sans-serif;
+}
+#title {
+    position: absolute;
+    top: 15%;
+    width:70%;
+    text-align:left;
+    padding-left:30%;
+    font-size:40px;
+}
+#content {
+    position:absolute;
+    top: 30%;
+    width: 50%;
+    text-align: left;
+    padding-left: 30%;
+}
+#email-request {
+    position:absolute;
+    top:70%;
+    width:70%;
+    text-align:left;
+    padding-left:30%;
+}
