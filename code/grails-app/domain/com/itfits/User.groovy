@@ -9,6 +9,11 @@ class User {
 	boolean accountLocked
 	boolean passwordExpired
 
+    static hasMany = [
+        measurements : HumanMeasurement,
+        contributions : UserClothingContribution
+    ]
+
 	static constraints = {
 		username blank: false, unique: true
 		password blank: false
