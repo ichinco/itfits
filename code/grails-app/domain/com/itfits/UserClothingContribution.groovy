@@ -4,6 +4,7 @@ class UserClothingContribution {
 
     User user
     boolean isFavorite
+    Clothing clothing
 
     static oneToMany = {
         measurements:Measurement

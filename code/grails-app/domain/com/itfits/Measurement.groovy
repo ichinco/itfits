@@ -3,7 +3,7 @@ package com.itfits
 class Measurement {
 
     MeasurementType type
-    int value
+    double value
     MeasurementDegree degree
     UserClothingContribution contribution
 
