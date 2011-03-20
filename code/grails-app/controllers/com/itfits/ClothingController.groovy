@@ -3,6 +3,7 @@ package com.itfits
 class ClothingController {
 
     def clothingService
+    def tagService
 
     def index = { }
 
@@ -17,6 +18,9 @@ class ClothingController {
             clothing = Clothing.get(params.clothingId)
         } else {
             clothing = new Clothing()
+            def materials = []
+            materials.add(new ClothingMaterial())
+            clothing.materials = materials
         }
 
         def model = [:]
@@ -46,6 +50,7 @@ class ClothingController {
         model["isWaterproof"] = params.waterproof=="on"
         model["isShear"] = params.shear=="on"
         model["size"] = params.size
+        model["tags"] = params.tags.split(' ').collect {tagService.findTag(it.toString())}
 
         Clothing clothing
         if (params.clothingId){
