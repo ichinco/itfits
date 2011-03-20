@@ -13,10 +13,10 @@
     <g:form controller="clothing" action="save" method="POST">
       <input type="hidden" name="clothingId" value="${clothing.id}" />
       brand: <input type="text" name="brand" value="${clothing.brand?.brandName}" /><br />
-      type: <g:select from="${ClothingType.values()}" name="clothingType" optionValue="displayName" />
+      type: <g:select from="${ClothingType.values()}" name="clothingType" value="${clothing.type}" optionValue="displayName" />
       size: <input type="text" name="size" value="${clothing.size}"/><br />
-      Is it waterproof: <input type="checkbox" name="waterproof" value="${clothing.isWaterproof}" /><br />
-      Does it shear: <input type="checkbox" name="shear" value="${clothing.isShear}" /><br />
+      Is it waterproof: <g:checkBox name="waterproof" value="${clothing.isWaterproof}"/><br />
+      Does it shear: <g:checkBox name="shear" value="${clothing.isShear}" /><br />
       <input type="submit" value="Done!" />
     </g:form>
   </body>

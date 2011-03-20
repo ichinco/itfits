@@ -43,8 +43,8 @@ class ClothingController {
         model["brand"] = brand
         model["materials"] = materials
         model["type"] = ClothingType.valueOf(params.clothingType)
-        model["isWaterproof"] = params.waterproof=="true"
-        model["isShear"] = params.shear=="true"
+        model["isWaterproof"] = params.waterproof=="on"
+        model["isShear"] = params.shear=="on"
         model["size"] = params.size
 
         Clothing clothing
