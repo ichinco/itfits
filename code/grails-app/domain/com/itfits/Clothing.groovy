@@ -2,13 +2,20 @@ package com.itfits
 
 class Clothing {
 
-    String brand
-    String type
+    ClothingBrand brand
+    ClothingType type
     String size
+    boolean isWaterproof
+    boolean isShear
+
 
     static hasMany = [
         measurements:Measurement,
-        reviews:Review
+        reviews:Review,
+        ratings:ClothingRating,
+        tags:Tag,
+        colors:Color,
+        materials:ClothingMaterial
     ]
 
     static constraints = {

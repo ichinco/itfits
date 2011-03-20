@@ -36,7 +36,7 @@
 	margin-left: -105px;
 	width: 100px;
 }
-#login .inner .login_message {color:red;}
+#login .inner .login_message {color: RGB(255, 0, 0);}
 #login .inner .text_ {width:120px;}
 #login .inner .chk {height:12px;}
 </style>
