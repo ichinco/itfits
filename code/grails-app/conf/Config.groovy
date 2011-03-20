@@ -90,4 +90,3 @@ log4j = {
 grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.itfits.User'
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.itfits.UserRole'
 grails.plugins.springsecurity.authority.className = 'com.itfits.Role'
-grails.plugins.springsecurity.openid.domainClass = 'com.itfits.OpenID'
