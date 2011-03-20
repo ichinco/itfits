@@ -18,7 +18,7 @@ class ClothingController {
     }
 
     def save = {
-        ClothingBrand brand = new ClothingBrand([brandName:"AwesomeD"])
+        ClothingBrand brand = new ClothingBrand([brandName:params.brand])
         brand.save()
 
         def materials = []
