@@ -10,14 +10,18 @@ class ClothingController {
         clothingService.findClothing(params.brand,params.type,params.size)
     }
 
-    def save = {
-        ClothingBrand brand = new ClothingBrand([brandName:"AwesomeK"])
-        brand.save()
+    def create = {
+        // find comparable in db
 
-        Clothing clothing = new Clothing()
-        clothing.brand = brand
-        clothing.type = ClothingType.PANTS
-        clothing.size = "really big"
+        // if not found
+        render(view:"/clothing/create")
+    }
+
+    def save = {
+
+
+        ClothingBrand brand = new ClothingBrand([brandName:"AwesomeD"])
+        brand.save()
 
         def materials = []
         ClothingMaterial mat1 = new ClothingMaterial([name:"cotton",percentComposition:10])
@@ -28,11 +32,18 @@ class ClothingController {
         materials.add(mat1)
         materials.add(mat2)
 
-        clothing.materials = materials
+        Clothing clothing = new Clothing()
+        clothing.brand = brand
+        clothing.type = params.clothingType
+        clothing.size = params.size
+        clothing.isWaterproof = (params.waterproof == "true")
+        clothing.isShear = (params.shear == "true")
+        //clothing.materials = materials
 
         clothing.save()
 
-        render (clothing.id.toString())
+
+        redirect (action:show, params:[id: clothing.id])
     }
 
     def show = {
