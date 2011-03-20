@@ -9,8 +9,10 @@ class TagService {
 
         if (!dbTag) {
             dbTag = new Tag([tag:tag])
+            dbTag.save()
         }
 
         return dbTag
     }
+
 }

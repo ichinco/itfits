@@ -4,6 +4,7 @@ class ClothingController {
 
     def clothingService
     def tagService
+    def materialsService
 
     def index = { }
 
@@ -35,13 +36,11 @@ class ClothingController {
         brand.save()
 
         def materials = []
-        ClothingMaterial mat1 = new ClothingMaterial([name:"cotton",percentComposition:10])
-        ClothingMaterial mat2 = new ClothingMaterial([name:"rayon",percentComposition:90])
-        mat1.save()
-        mat2.save()
-
-        materials.add(mat1)
-        materials.add(mat2)
+        def materialIndex = 0
+        while (params.get("materialType${materialIndex}".toString())){
+            materials.add(materialsService.findMaterial(params.get("materialType${materialIndex}".toString()).toString(), Integer.parseInt(params.get("materialComposition${materialIndex}".toString()).toString())))
+            materialIndex++
+        }
 
         def model = [:]
         model["brand"] = brand
