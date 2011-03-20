@@ -12,9 +12,18 @@ class ClothingController {
 
     def create = {
         // find comparable in db
+        Clothing clothing
+        if (params.clothingId){
+            clothing = Clothing.get(params.clothingId)
+        } else {
+            clothing = new Clothing()
+        }
+
+        def model = [:]
+        model["clothing"] = clothing
 
         // if not found
-        render(view:"/clothing/create")
+        render(view:"/clothing/create", model:model)
     }
 
     def save = {
@@ -30,7 +39,20 @@ class ClothingController {
         materials.add(mat1)
         materials.add(mat2)
 
-        Clothing clothing = clothingService.createClothing(brand, materials, ClothingType.valueOf(params.clothingType), params.size, params.waterproof=="true", params.shear=="true")
+        def model = [:]
+        model["brand"] = brand
+        model["materials"] = materials
+        model["type"] = ClothingType.valueOf(params.clothingType)
+        model["isWaterproof"] = params.waterproof=="true"
+        model["isShear"] = params.shear=="true"
+        model["size"] = params.size
+
+        Clothing clothing
+        if (params.clothingId){
+            clothing = clothingService.editClothing(Long.parseLong(params.clothingId),model)
+        } else {
+            clothing = clothingService.createClothing(model)
+        }
 
         redirect (action:show, params:[id: clothing.id])
     }

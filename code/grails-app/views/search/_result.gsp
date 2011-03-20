@@ -15,5 +15,6 @@
     <g:each in="${clothing.materials}">
         <div class="clothMaterial">${it.name} (${it.percentComposition}&#37;)</div>
     </g:each>
+    <g:link controller="clothing" action="create" params="['clothingId':clothing.id]">Edit</g:link>
   </body>
 </html>

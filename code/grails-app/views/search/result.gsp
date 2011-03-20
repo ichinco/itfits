@@ -11,7 +11,7 @@
   <head><title>Simple GSP page</title></head>
   <body>
     <g:each in="${clothes}" var="clothing">
-        <g:render template="result" model="['clothing':clothing]" /><br />
+        <g:render template="result" model="['clothing':clothing]" /><br /><br />
     </g:each>
   </body>
 </html>

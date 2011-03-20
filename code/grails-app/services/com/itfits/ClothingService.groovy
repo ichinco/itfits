@@ -4,15 +4,20 @@ class ClothingService {
 
     static transactional = true
 
-    def createClothing(ClothingBrand brand, List<ClothingMaterial> materials, ClothingType type, String size, boolean isWaterproof, boolean isShear) {
-
+    def createClothing(model) {
         Clothing clothing = new Clothing()
-        clothing.brand = brand
-        clothing.type = type
-        clothing.size = size
-        clothing.isWaterproof = isWaterproof
-        clothing.isShear = isShear
-        clothing.materials = materials
+        return updateClothing(clothing, model)
+    }
+
+    def editClothing(long id, model){
+        Clothing clothing = Clothing.get(id)
+        return updateClothing(clothing, model)
+    }
+
+    private updateClothing(Clothing clothing, model){
+        model.each {
+            clothing.setProperty(it.key, it.value)
+        }
 
         clothing.save()
 

@@ -11,11 +11,12 @@
   <head><title>Simple GSP page</title></head>
   <body>
     <g:form controller="clothing" action="save" method="POST">
-      brand: <input type="text" name="brand" /><br />
+      <input type="hidden" name="clothingId" value="${clothing.id}" />
+      brand: <input type="text" name="brand" value="${clothing.brand?.brandName}" /><br />
       type: <g:select from="${ClothingType.values()}" name="clothingType" optionValue="displayName" />
-      size: <input type="text" name="size" /><br />
-      Is it waterproof: <input type="checkbox" name="waterproof" /><br />
-      Does it shear: <input type="checkbox" name="shear" /><br />
+      size: <input type="text" name="size" value="${clothing.size}"/><br />
+      Is it waterproof: <input type="checkbox" name="waterproof" value="${clothing.isWaterproof}" /><br />
+      Does it shear: <input type="checkbox" name="shear" value="${clothing.isShear}" /><br />
       <input type="submit" value="Done!" />
     </g:form>
   </body>
