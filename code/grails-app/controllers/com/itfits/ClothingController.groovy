@@ -18,8 +18,6 @@ class ClothingController {
     }
 
     def save = {
-
-
         ClothingBrand brand = new ClothingBrand([brandName:"AwesomeD"])
         brand.save()
 
@@ -32,16 +30,7 @@ class ClothingController {
         materials.add(mat1)
         materials.add(mat2)
 
-        Clothing clothing = new Clothing()
-        clothing.brand = brand
-        clothing.type = params.clothingType
-        clothing.size = params.size
-        clothing.isWaterproof = (params.waterproof == "true")
-        clothing.isShear = (params.shear == "true")
-        //clothing.materials = materials
-
-        clothing.save()
-
+        Clothing clothing = clothingService.createClothing(brand, materials, ClothingType.valueOf(params.clothingType), params.size, params.waterproof=="true", params.shear=="true")
 
         redirect (action:show, params:[id: clothing.id])
     }
