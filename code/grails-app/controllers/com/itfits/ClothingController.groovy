@@ -5,6 +5,7 @@ class ClothingController {
     def clothingService
     def tagService
     def materialsService
+    def brandService
 
     def index = { }
 
@@ -32,8 +33,7 @@ class ClothingController {
     }
 
     def save = {
-        ClothingBrand brand = new ClothingBrand([brandName:params.brand])
-        brand.save()
+        ClothingBrand brand = brandService.findBrand(params.brand)
 
         def materials = []
         def materialIndex = 0
