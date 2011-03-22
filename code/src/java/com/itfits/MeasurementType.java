@@ -1,5 +1,8 @@
 package com.itfits;
 
+
+import java.util.List;
+
 /**
  * Created by IntelliJ IDEA.
  * User: denise
@@ -8,6 +11,12 @@ package com.itfits;
  * To change this template use File | Settings | File Templates.
  */
 public enum MeasurementType {
-    INSEAM,
-    RISE
+    INSEAM("inseam"),
+    RISE("rise");
+
+    public String displayName;
+
+    MeasurementType(String displayName) {
+        this.displayName = displayName;
+    }
 }

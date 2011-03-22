@@ -8,12 +8,14 @@ package com.itfits;
  * To change this template use File | Settings | File Templates.
  */
 public enum ClothingType {
-    PANTS("pants"),
-    DRESS("dress");
+    PANTS("pants", new MeasurementDimension[]{new MeasurementDimension<Integer>(MeasurementType.INSEAM), new MeasurementDimension<Integer>(MeasurementType.RISE)}),
+    DRESS("dress", new MeasurementDimension[]{});
 
     public String displayName;
+    public MeasurementDimension[] relevantDimensions;
 
-    ClothingType(String displayName) {
+    ClothingType(String displayName, MeasurementDimension[] relevantTypes) {
         this.displayName = displayName;
+        this.relevantDimensions = relevantTypes;
     }
 }

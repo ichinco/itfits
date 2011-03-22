@@ -20,4 +20,14 @@ class Clothing {
 
     static constraints = {
     }
+
+    def findMeasurementByType(MeasurementType type) {
+        for (Measurement measurement : measurements){
+            if (measurement.type.equals(type)){
+                return measurement;
+            }
+        }
+
+        return null;
+    }
 }

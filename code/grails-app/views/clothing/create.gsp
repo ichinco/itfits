@@ -17,6 +17,13 @@
       size: <input type="text" name="size" value="${clothing.size}"/><br />
       Is it waterproof: <g:checkBox name="waterproof" value="${clothing.isWaterproof}"/><br />
       Does it shear: <g:checkBox name="shear" value="${clothing.isShear}" /><br />
+        <div class="measurements">
+            <g:each in="${clothing.type?.relevantDimensions ?: ClothingType.values()[0].relevantDimensions}" var="measurementDimension">
+                ${measurementDimension.measurementType.displayName}
+                <g:textField name="measurement_${measurementDimension.measurementType}" value="${clothing.findMeasurementByType(measurementDimension.measurementType)?.value}" />
+                <br />
+            </g:each>
+        </div>
         <div class="materials">
             <g:each in="${clothing.materials}" var="material" status="i">
                 material type: <input type="text" name="materialType${i}" value="${material.name}" />
