@@ -17,11 +17,16 @@ class UserService {
         newUser.accountLocked = false
         newUser.enabled = true
 
+        List<Role> roleList = Role.findAll('from Role as role where role.authority = ?', ['ROLE_USER'])
+        assert roleList.size() != 0
+        assert roleList[0].authority == "ROLE_USER"
+
         if(!newUser.save())
         {
             return newUser.errors
         }
 
+        UserRole.create newUser, roleList[0], true
         return 0
     }
 }

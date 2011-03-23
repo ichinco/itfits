@@ -1,4 +1,5 @@
 package com.itfits
+import grails.plugins.springsecurity.Secured
 
 class UserController {
 
@@ -24,7 +25,7 @@ class UserController {
             model["password"] = springSecurityService.encodePassword(params.password)
 
             //render(view:"/user/register",, model:model)
-            def saveLog = userService.createUser(params.emailAddress, params.password)
+            def saveLog = userService.createUser(model["emailAddress"], model["password"])
             if(saveLog == 0)
             {
                 // if pass
@@ -47,13 +48,25 @@ class UserController {
 
     }
 
+    @Secured(["ROLE_USER"])
     def dashboard =
     {
-        render(view:"/user/dashboard")
+        if(springSecurityService.isLoggedIn())
+        {
+            render(view:"/user/dashboard")
+        }
+        else
+        {
+            //config.successHandler.targetUrlParameter = "/user/dashboard"
+            //springSecurityService.successHandler.targetUrlParameter = "/user/dashboard"
+
+            redirect(view:"/login")
+        }
     }
 
     def seeall =
     {
+
         def model = [:]
         model['usercount'] = User.count()
         if(User.count() > 0)
