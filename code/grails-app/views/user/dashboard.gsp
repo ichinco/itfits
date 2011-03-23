@@ -10,6 +10,7 @@
 <html>
   <head><title>Welcome</title></head>
   <body>
-    <div>bleh</div>
+    <div>Logged in: ${user.username}</div>
+    <div><a href="/code/user/edit?id=${user.id}">edit</a></div>
   </body>
 </html>
