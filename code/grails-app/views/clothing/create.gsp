@@ -12,6 +12,7 @@
   <body>
     <g:form controller="clothing" action="save" method="POST">
       <input type="hidden" name="clothingId" value="${clothing.id}" />
+      <input type="hidden" name="userId" value="${user.id}" />
       brand: <input type="text" name="brand" value="${clothing.brand?.brandName}" /><br />
       type: <g:select from="${ClothingType.values()}" name="clothingType" value="${clothing.type}" optionValue="displayName" />
       size: <input type="text" name="size" value="${clothing.size}"/><br />
@@ -20,7 +21,7 @@
         <div class="measurements">
             <g:each in="${clothing.type?.relevantDimensions ?: ClothingType.values()[0].relevantDimensions}" var="measurementDimension">
                 ${measurementDimension.measurementType.displayName}
-                <g:textField name="measurement_${measurementDimension.measurementType}" value="${clothing.findMeasurementByType(measurementDimension.measurementType)?.value}" />
+                <g:textField name="measurement_${measurementDimension.measurementType}" value="${contribution.findMeasurementByType(measurementDimension.measurementType)?.value}" />
                 <br />
             </g:each>
         </div>

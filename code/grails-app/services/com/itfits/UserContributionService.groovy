@@ -4,39 +4,29 @@ class UserContributionService {
 
     static transactional = true
 
-    def createContribution(boolean isFavorite, List<Measurement> measurements, User user, Clothing clothing) {
-        UserClothingContribution contribution = new UserClothingContribution();
-        contribution.isFavorite = isFavorite
-        contribution.measurements = measurements
-        contribution.user = user
-        contribution.clothing = clothing
+    def createContribution(User user, Clothing clothing) {
+        UserClothingContribution contribution = UserClothingContribution.findByUserAndClothing(user,clothing);
+        if (!contribution){
+            contribution = new UserClothingContribution();
+            contribution.user = user
+            contribution.clothing = clothing
 
-        contribution.save()
-    }
-
-    def getOrCreateClothing(String brand, String type, String size){
-        Clothing dbClothing = Clothing.find(clothing)
-        if (!dbClothing){
-            dbClothing = new Clothing()
-            dbClothing.brand = brand
-            dbClothing.type = type
-            dbClothing.size = size
-
-            dbClothing.save()
+            contribution.save()
         }
 
-        return dbClothing
-    }
-
-    def getOrCreateClothing(String id){
-        return Clothing.get(Integer.parseInt(id))
+        return contribution;
     }
 
     def createMeasurement(MeasurementType type,
                           double value,
-                          MeasurementDegree degree){
-        Measurement measurement = new Measurement()
-        measurement.type = type
+                          MeasurementDegree degree,
+                          UserClothingContribution contribution){
+        Measurement measurement = Measurement.findByContributionAndType(contribution,type);
+        if (!measurement){
+            measurement = new Measurement()
+            measurement.type = type
+            measurement.contribution = contribution
+        }
         measurement.value = value
         measurement.degree = degree
 
