@@ -122,7 +122,7 @@ class UserController {
     @Secured(["ROLE_USER"])
     def edit = {
         if(springSecurityService.currentUser.id != params.id)
-            redirect(action:LoginController.denied)
+            redirect(controller:"login", action:"denied")
 
         def userInstance = User.get(params.id)
         if (!userInstance) {
