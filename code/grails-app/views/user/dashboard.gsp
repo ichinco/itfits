@@ -12,5 +12,9 @@
   <body>
     <div>Logged in: ${user.username}</div>
     <div><a href="/code/user/edit?id=${user.id}">edit</a></div>
+    <div><a href="/code/clothing/create?id=${user.id}">create clothing</a></div>
+                                                                  <!-- strictly speaking, passing id's is not necessary.
+                                                                  if you allow me, I'll edit the clothing page so that
+                                                                  we don't need this part. -->
   </body>
 </html>

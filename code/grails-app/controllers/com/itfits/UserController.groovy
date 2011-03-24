@@ -134,6 +134,7 @@ class UserController {
         }
     }
 
+    @Secured(["ROLE_USER"])
     def update = {
         def userInstance = User.get(params.id)
         if (userInstance) {
