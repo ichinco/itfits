@@ -121,7 +121,7 @@ class UserController {
 
     @Secured(["ROLE_USER"])
     def edit = {
-        if(springSecurityService.currentUser.id != params.id)
+        if(springSecurityService.currentUser.id != Long.parseLong(params.id))
             redirect(controller:"login", action:"denied")
 
         def userInstance = User.get(params.id)
