@@ -3,15 +3,22 @@ package com.itfits
 class UserClothingContribution {
 
     User user
-    boolean isFavorite
-    boolean like
-    int fit
     Clothing clothing
 
-    static oneToMany = {
+    static hasMany = [
         measurements:Measurement
-    }
+    ]
 
     static constraints = {
+    }
+
+    public Measurement findMeasurementByType(MeasurementType type){
+        Measurement measurement = null;
+        measurements.each {
+            if (it.type.equals(type)){
+                measurement = it;
+            }
+        }
+        return measurement;
     }
 }

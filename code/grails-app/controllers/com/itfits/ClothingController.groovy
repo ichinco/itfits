@@ -6,6 +6,8 @@ class ClothingController {
     def tagService
     def materialsService
     def brandService
+    def userContributionService
+    def springSecurityService
 
     def index = { }
 
@@ -16,17 +18,22 @@ class ClothingController {
     def create = {
         // find comparable in db
         Clothing clothing
+        UserClothingContribution contribution
         if (params.clothingId){
             clothing = Clothing.get(params.clothingId)
+            contribution = userContributionService.createContribution((User) springSecurityService.currentUser, clothing)
         } else {
             clothing = new Clothing()
             def materials = []
             materials.add(new ClothingMaterial())
             clothing.materials = materials
+            contribution = new UserClothingContribution();
         }
 
         def model = [:]
         model["clothing"] = clothing
+        model["user"] = springSecurityService.currentUser
+        model["contribution"] = contribution
 
         // if not found
         render(view:"/clothing/create", model:model)
@@ -46,6 +53,7 @@ class ClothingController {
         model["brand"] = brand
         model["materials"] = materials
         model["type"] = ClothingType.valueOf(params.clothingType)
+
         model["isWaterproof"] = params.waterproof=="on"
         model["isShear"] = params.shear=="on"
         model["size"] = params.size
@@ -56,6 +64,13 @@ class ClothingController {
             clothing = clothingService.editClothing(Long.parseLong(params.clothingId),model)
         } else {
             clothing = clothingService.createClothing(model)
+        }
+
+        UserClothingContribution contribution = userContributionService.createContribution(User.get(Long.parseLong(params.userId)), clothing)
+        model["measurements"] = ClothingType.valueOf(params.clothingType).relevantDimensions.collect {
+            userContributionService.createMeasurement(it.measurementType,
+            Double.parseDouble(params.get("measurement_${it.measurementType}".toString()).toString()),
+            MeasurementDegree.JUST_RIGHT, contribution)
         }
 
         redirect (action:show, params:[id: clothing.id])
