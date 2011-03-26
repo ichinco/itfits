@@ -8,5 +8,6 @@ class Measurement {
     UserClothingContribution contribution
 
     static constraints = {
+        contribution nullable:true
     }
 }

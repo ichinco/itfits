@@ -9,7 +9,9 @@ package com.itfits;
  */
 public enum ClothingType {
     PANTS("pants", new MeasurementDimension[]{new MeasurementDimension<Integer>(MeasurementType.INSEAM), new MeasurementDimension<Integer>(MeasurementType.RISE)}),
-    DRESS("dress", new MeasurementDimension[]{});
+    DRESS("dress", new MeasurementDimension[]{}),
+    HUMAN_FEMALE("girl", new MeasurementDimension[]{new MeasurementDimension<Integer>(MeasurementType.INSEAM), new MeasurementDimension<Integer>(MeasurementType.RISE)}),
+    HUMAN_MALE("guy", new MeasurementDimension[]{ new MeasurementDimension<Integer>(MeasurementType.NECK)});
 
     public String displayName;
     public MeasurementDimension[] relevantDimensions;

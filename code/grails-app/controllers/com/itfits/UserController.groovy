@@ -180,4 +180,30 @@ class UserController {
             redirect(action: "list")
         }
     }
+
+    @Secured(["ROLE_USER"])
+    def measurements = {
+
+        UserClothingContribution contribution = new UserClothingContribution()
+        contribution.measurements =  springSecurityService.currentUser.measurements
+
+        def model = [:]
+        model.dimensions = ClothingType.HUMAN_FEMALE.relevantDimensions
+        model.contribution = contribution
+
+        render(view:"/user/user_measurements", model:model)
+    }
+
+    @Secured(["ROLE_USER"])
+    def saveMeasurements = {
+        def measurements = ClothingType.HUMAN_FEMALE.relevantDimensions.collect {
+            userService.createMeasurement(it.measurementType,
+            Double.parseDouble(params.get("measurement_${it.measurementType}".toString()).toString()))
+        }
+
+        User user = springSecurityService.currentUser
+        userService.saveMeasurements(user, measurements)
+
+        redirect(controller:"user", action:"dashboard")
+    }
 }

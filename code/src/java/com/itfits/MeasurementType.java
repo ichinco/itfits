@@ -12,7 +12,10 @@ import java.util.List;
  */
 public enum MeasurementType {
     INSEAM("inseam"),
-    RISE("rise");
+    RISE("rise"),
+    WAIST("waist"),
+    HIPS("hips"),
+    NECK("neck");
 
     public String displayName;
 

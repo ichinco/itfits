@@ -10,6 +10,7 @@ class UserClothingContribution {
     ]
 
     static constraints = {
+        clothing nullable:true
     }
 
     public Measurement findMeasurementByType(MeasurementType type){

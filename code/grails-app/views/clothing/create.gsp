@@ -19,11 +19,10 @@
       Is it waterproof: <g:checkBox name="waterproof" value="${clothing.isWaterproof}"/><br />
       Does it shear: <g:checkBox name="shear" value="${clothing.isShear}" /><br />
         <div class="measurements">
-            <g:each in="${clothing.type?.relevantDimensions ?: ClothingType.values()[0].relevantDimensions}" var="measurementDimension">
-                ${measurementDimension.measurementType.displayName}
-                <g:textField name="measurement_${measurementDimension.measurementType}" value="${contribution.findMeasurementByType(measurementDimension.measurementType)?.value}" />
-                <br />
-            </g:each>
+            <g:render template="measurements" model="[
+                    'dimensions':clothing.type?.relevantDimensions ?: ClothingType.values()[0].relevantDimensions,
+                    'contribution':contribution
+            ]" />
         </div>
         <div class="materials">
             <g:each in="${clothing.materials}" var="material" status="i">

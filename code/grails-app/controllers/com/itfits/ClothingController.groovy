@@ -1,5 +1,7 @@
 package com.itfits
 
+import grails.plugins.springsecurity.Secured
+
 class ClothingController {
 
     def clothingService
@@ -15,6 +17,7 @@ class ClothingController {
         clothingService.findClothing(params.brand,params.type,params.size)
     }
 
+    @Secured(["ROLE_USER"])
     def create = {
         // find comparable in db
         Clothing clothing

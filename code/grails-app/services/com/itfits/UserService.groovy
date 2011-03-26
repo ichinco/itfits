@@ -29,4 +29,19 @@ class UserService {
         UserRole.create newUser, roleList[0], true
         return 0
     }
+
+    def createMeasurement(MeasurementType type, double value){
+        Measurement measurement = new Measurement()
+        measurement.type = type
+        measurement.value = value
+        measurement.degree = MeasurementDegree.JUST_RIGHT
+        measurement.save()
+
+        return measurement
+    }
+
+    def saveMeasurements(User user, List<Measurement> measurements){
+        user.measurements = measurements
+        user.save()
+    }
 }

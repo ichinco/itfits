@@ -152,7 +152,6 @@
 </g:each>
               --%>
 </ul>
-<g:link controller="humanMeasurement" action="create" params="['user.id': userInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'humanMeasurement.label', default: 'HumanMeasurement')])}</g:link>
 
                                 </td>
                             </tr>

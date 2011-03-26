@@ -19,7 +19,7 @@ class User {
     UserProfile userProfile
 
     static hasMany = [
-        measurements : HumanMeasurement,
+        measurements : Measurement,
         contributions : UserClothingContribution
     ]
 
