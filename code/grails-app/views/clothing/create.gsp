@@ -8,20 +8,23 @@
 
 <%@ page import="com.itfits.ClothingType" contentType="text/html;charset=UTF-8" %>
 <html>
-  <head><title>Simple GSP page</title></head>
+  <head>
+    <meta name="layout" content="fits_layout" />
+  </head>
   <body>
+    <g:javascript src="create_item.js" />
     <g:form controller="clothing" action="save" method="POST">
-      <input type="hidden" name="clothingId" value="${clothing.id}" />
-      <input type="hidden" name="userId" value="${user.id}" />
-      brand: <input type="text" name="brand" value="${clothing.brand?.brandName}" /><br />
-      type: <g:select from="${ClothingType.values()}" name="clothingType" value="${clothing.type}" optionValue="displayName" />
-      size: <input type="text" name="size" value="${clothing.size}"/><br />
-      Is it waterproof: <g:checkBox name="waterproof" value="${clothing.isWaterproof}"/><br />
-      Does it shear: <g:checkBox name="shear" value="${clothing.isShear}" /><br />
+        <input type="hidden" name="clothingId" value="${clothing.id}" />
+        <input type="hidden" name="userId" value="${user.id}" />
+        brand: <input type="text" name="brand" value="${clothing.brand?.brandName}" /><br />
+        type: <g:select from="${ClothingType.values()}" id="clothingType" name="clothingType" value="${clothing.type}" optionValue="displayName" />
+        size: <input type="text" name="size" value="${clothing.size}"/><br />
+        Is it waterproof: <g:checkBox name="waterproof" value="${clothing.isWaterproof}"/><br />
+        Does it shear: <g:checkBox name="shear" value="${clothing.isShear}" /><br />
         <div class="measurements">
             <g:render template="measurements" model="[
-                    'dimensions':clothing.type?.relevantDimensions ?: ClothingType.values()[0].relevantDimensions,
-                    'contribution':contribution
+            'dimensions':clothing.type?.relevantDimensions ?: ClothingType.values()[0].relevantDimensions,
+            'contribution':contribution
             ]" />
         </div>
         <div class="materials">
@@ -33,7 +36,7 @@
         </div>
         review: <br/> <g:textArea name="review" rows="6" cols="56" /> <br />
         tags: <g:textField name="tags" value="${clothing.tags?.collect {it.tag}?.join(' ')}" /> <br />
-      <input type="submit" value="Done!" />
+        <input type="submit" value="Done!" />
     </g:form>
   </body>
 </html>

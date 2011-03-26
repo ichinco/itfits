@@ -89,5 +89,13 @@ class ClothingController {
         render(view:"/clothing/show", model:model)
     }
 
+    def updateMeasurements = {
+        ClothingType newType = ClothingType.valueOf(params.type)
 
+        def model = [:]
+        model['dimensions'] = newType.relevantDimensions
+        model['contribution'] = new UserClothingContribution()
+
+        render(view:"/clothing/_measurements", model:model)
+    }
 }
