@@ -27,31 +27,41 @@ $().ready( function () {
                     $("#brandSuggestion").css("visibility","visible");
                     $("#brandSuggestion").empty();
                     $.each(data,function(){
-                        $("#brandSuggestion").append("<div>"+ this +"</div><br />");
+                        $("#brandSuggestion").append("<div>"+ this +"</div>");
                     });
                 }
             });
         } else {
+            var divFilter = "div";
             var currentlySelected = $("#brandSuggestion").children('.selected');
             $(currentlySelected).removeClass('selected');
             $(currentlySelected).addClass('unselected');
             switch (eventObject.keyCode){
                 case 38:
-                    currentlySelected.previous().removeClass('unselected');
-                    currentlySelected.previous().addClass('selected');
+                    var prev;
+                    if (currentlySelected == $("#brandSuggestion").first(divFilter)){
+                        prev = $("#brandSuggestion").last(divFilter);
+                    } else {
+                        prev = currentlySelected.prev(divFilter);
+                    }
+                    prev.removeClass('unselected');
+                    prev.addClass('selected');
                     break;
                 case 40:
                     var next;
-                    if (currentlySelected.length == 0) {
-                        next = $("#brandSuggestion").children().first();
+                    if (currentlySelected.length == 0 || currentlySelected.is(":last-child")) {
+                        next = $("#brandSuggestion").children().first(divFilter);
                     } else {
-                        next = currentlySelected.next();
+                        next = currentlySelected.next(divFilter);
                     }
                     next.addClass('selected');
                     next.removeClass('unselected');
                     break;
                 case 9:
-                    $('#brand').attr('value', currentlySelected.text());
+                    if (currentlySelected.length != 0){
+                        $('#brand').attr('value', currentlySelected.text());
+                        $('#brandSuggestion').css('visibility', 'hidden');
+                    }
                     break;
             }
         }
