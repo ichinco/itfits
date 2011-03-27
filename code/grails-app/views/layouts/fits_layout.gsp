@@ -11,6 +11,7 @@
   <head>
       <title><g:layoutTitle default="fits"/></title>
       <g:javascript library="jquery" plugin="jquery"/>
+      <link type="text/css" href="${resource(dir:'css',file:'autocomplete.css')}" />
       <g:layoutHead />
   </head>
   <body>
