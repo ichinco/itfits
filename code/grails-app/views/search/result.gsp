@@ -8,7 +8,8 @@
 
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
-  <head><link rel="stylesheet" type="text/css" href="${resource(dir:'css',file:'search.css',absolute:true)}" /></head>
+  <head>
+      <link rel="stylesheet" type="text/css" href="${resource(dir:'css',file:'search.css',absolute:true)}" /></head>
   <body>
     <g:render template="searchUI" />
     <g:each in="${clothes}" var="clothing">
