@@ -3,7 +3,10 @@ package com.itfits
 class SearchController {
 
     def index = {
-        List<Clothing> clothes = Clothing.all
+        List<Clothing> clothes = [];
+
+        if(Clothing.count() > 0)
+            clothes = Clothing.all
 
         def model = [:]
         model["clothes"] = clothes
