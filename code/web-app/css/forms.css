@@ -8,4 +8,7 @@ div.label
     display: inline;
 }
 
-
+input.priceInput
+{
+    width: 50px;
+}
