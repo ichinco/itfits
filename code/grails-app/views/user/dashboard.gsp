@@ -16,5 +16,6 @@
                 <!-- [sounding like an ass:], passing id's is not necessary.
                 Blah blah blah, allow me to edit the clothing page so that
                 we don't need this part. [End of talking] -->
+    <g:link controller="search">Search</g:link> <br />
   </body>
 </html>

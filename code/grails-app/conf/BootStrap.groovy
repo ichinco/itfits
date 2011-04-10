@@ -5,6 +5,8 @@ import com.itfits.UserRole
 class BootStrap {
 
     def emailConfirmationService
+    def springSecurityService
+    def userService
 
     // TODO: fill this part out
     def init = { servletContext ->
@@ -41,7 +43,8 @@ class BootStrap {
         custserv.save(flush: true)
         market.save(flush: true)
 
-
+        // default users
+        userService.createUser("ichinco@gmail.com", springSecurityService.encodePassword("denise87"))
     }
 
     def destroy = {

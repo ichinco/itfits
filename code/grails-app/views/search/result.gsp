@@ -8,11 +8,11 @@
 
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
-  <head><title>Simple GSP page</title></head>
+  <head><link rel="stylesheet" type="text/css" href="${resource(dir:'css',file:'search.css',absolute:true)}" /></head>
   <body>
     <g:render template="searchUI" />
     <g:each in="${clothes}" var="clothing">
-        <g:render template="result" model="['clothing':clothing]" /><br /><br />
+        <g:render template="result" model="['clothing':clothing]" />
     </g:each>
   </body>
 </html>
