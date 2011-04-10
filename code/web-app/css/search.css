@@ -2,3 +2,6 @@
 .tag {float:left; padding:1px 6px 1px 6px; margin:2px; background-color:yellow}
 #delete {display:none}
 .userAction {position:absolute; right:40px; top:40px}
+.explanation-text {text-align:center; float:left; width:100px}
+.closeExplanation {float:left}
+.explanation {display:none; position:absolute; left:0px; top:0px; background-color:white; padding:3px; border:dotted; border-color:black; border-width:1px; }

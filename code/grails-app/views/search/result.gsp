@@ -9,7 +9,12 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
   <head>
-      <link rel="stylesheet" type="text/css" href="${resource(dir:'css',file:'search.css',absolute:true)}" /></head>
+      <meta name="layout" content="fits_layout" />
+      <link rel="stylesheet" type="text/css" href="${resource(dir:'css',file:'search.css',absolute:true)}" />
+      <g:javascript src="searchui.js" />
+      <link rel="stylesheet" href="${resource(dir:'css', file:'searchUI.css')}" />
+      <link rel="stylesheet" href="${resource(dir:'css', file:'forms.css')}" />
+  </head>
   <body>
     <g:render template="searchUI" />
     <g:each in="${clothes}" var="clothing">

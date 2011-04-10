@@ -8,7 +8,6 @@
 
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
-  <head><title>Simple GSP page</title></head>
   <body>
     <div class="clothingItem">
         <div class="clothingImage">
@@ -28,6 +27,14 @@
         <div class="userAction">
             <img id="why" src="${resource(dir:'images', file:'why.png', absolute:tree)}" alt="why?" />
             <img id="delete" src="${resource(dir:'images', file:'delete.png', absolute:tree)}" alt="delete" />
+        </div>
+        <div class="explanation">
+            <div class="explanation-text">
+                Here's where we explain why this showed up in their search.
+            </div>
+            <div class="closeExplanation">
+                <img src="${resource(dir:'images', file:'delete.png', absolute:tree)}" alt="delete" />
+            </div>
         </div>
     </div>
   </body>
