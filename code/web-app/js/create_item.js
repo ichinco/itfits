@@ -67,6 +67,7 @@ $().ready( function () {
         }
     });
 });
+
 function alphaNumericCheck(theChar) {
 
 	if ((theChar < 48) || (theChar > 122) ||

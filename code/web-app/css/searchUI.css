@@ -18,6 +18,12 @@ div.searchtitle
     margin-right: 40px;
 }
 
+div.searchradio
+{
+    display: none;
+}
+
+
 div.searchExpander
 {
     margin-top: 10px;

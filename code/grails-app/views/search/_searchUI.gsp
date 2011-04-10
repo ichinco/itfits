@@ -11,7 +11,6 @@
   <head>
     <link rel="stylesheet" href="${resource(dir:'css', file:'searchUI.css')}" />
     <link rel="stylesheet" href="${resource(dir:'css', file:'forms.css')}" />
-
     <title>Simple GSP page</title>
   </head>
   <body>
