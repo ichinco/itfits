@@ -8,7 +8,13 @@ div.searchContainer
     font-family: helvetica;
     color: black;
     padding-left: 20px;
+    padding-right: 20px;
     padding-top: 15px;
+}
+
+div.searchSubContainer
+{
+
 }
 
 div.searchtitle
@@ -18,11 +24,24 @@ div.searchtitle
     margin-right: 40px;
 }
 
+div.searchsubtitle
+{
+    font-size: 25px;
+}
+
+
 div.searchradio
 {
     display: none;
 }
 
+div.searchAdvancedContainer
+{
+    display: block;
+    margin-top: 20px;
+    border-top: black dotted 1px;
+    padding-top: 15px;
+}
 
 div.searchExpander
 {
@@ -33,4 +52,13 @@ div.searchExpander
 div.searchGraphic
 {
     display: inline;
+}
+
+div.searchSwatch
+{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    overflow: hidden;
+    border: black solid 1px;
 }

@@ -32,6 +32,67 @@
           </select>
         </div>
         <div class="searchExpander">advanced <div class="searchGraphic">+</div></div>
+        <div class="searchAdvancedContainer">
+              <div class="label searchsubtitle">size</div>
+              <div class="formblock">
+                <input type="checkbox" name="size" value="XS" /><div class="label">XS</div>
+                <input type="checkbox" name="size" value="S" /><div class="label">S</div>
+                <input type="checkbox" name="size" value="M" /><div class="label">M</div>
+                <input type="checkbox" name="size" value="L" /><div class="label">L</div>
+                <input type="checkbox" name="size" value="XL" /><div class="label">XL</div>
+              </div>
+            <div class="searchExpander">enter measurements <div class="searchGraphic">+</div></div>
+            <br />
+            <div class="label searchsubtitle">color</div>
+            <div class="formblock">
+                <input type="checkbox" name="color" /><div class="searchSwatch">white</div>
+                <input type="checkbox" name="color" /><div class="searchSwatch">black</div>
+                <input type="checkbox" name="color" /><div class="searchSwatch">red</div>
+                <input type="checkbox" name="color" /><div class="searchSwatch">green</div>
+                <input type="checkbox" name="color" /><div class="searchSwatch">blue</div>
+            </div>
+            <div class="searchExpander">more colors and schemes <div class="searchGraphic">+</div></div>
+            <br />
+            <div class="label searchsubtitle">review</div>
+            <div class="formblock">
+              <select name="brand">
+                  <option>0</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+              </select>
+              <div class="label">stars and up</div>
+            </div>
+            <br />
+            <div class="label searchsubtitle">price</div>
+            <div class="formblock">
+              <div class="label">price range:</div>
+              <select name="brand">
+                  <option>Under $25</option>
+                  <option>$25 - $50</option>
+                  <option>$50 - $75</option>
+                  <option>$75 - $100</option>
+                  <option>$100 and above</option>
+                  <option>Custom</option>
+              </select>
+              <br />
+              <div class="formblock">
+                <div class="label">from $</div><input class="priceInput" name="custPriceLower" />
+                <div class="label"> to $</div><input class="priceInput" name="custPriceHigher" />
+              </div>
+            </div>
+            <div class="formblock">
+              <input type="checkbox" name="isAvailToBuy"/><div class="label">available for purchase</div>
+            </div>
+            <div class="formblock">
+                <div class="searchExpander"> materials <div class="searchGraphic">+</div></div>
+            </div>
+            <div class="formblock">
+                <div class="searchExpander"> discounts <div class="searchGraphic">+</div></div>
+            </div>
+        </div>
       </div>
     </g:form>
   </body>
