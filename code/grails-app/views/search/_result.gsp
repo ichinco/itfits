@@ -25,6 +25,10 @@
         <g:each in="${clothing.tags}" var="tag">
             <div class="tag">${tag.tag}</div>
         </g:each>
+        <div class="userAction">
+            <img id="why" src="${resource(dir:'images', file:'why.png', absolute:tree)}" alt="why?" />
+            <img id="delete" src="${resource(dir:'images', file:'delete.png', absolute:tree)}" alt="delete" />
+        </div>
     </div>
   </body>
 </html>

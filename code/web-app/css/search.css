@@ -1,2 +1,4 @@
-.clothingItem {float:left; padding:20px}
+.clothingItem {position:relative; float:left; padding:20px}
 .tag {float:left; padding:1px 6px 1px 6px; margin:2px; background-color:yellow}
+#delete {display:none}
+.userAction {position:absolute; right:40px; top:40px}
