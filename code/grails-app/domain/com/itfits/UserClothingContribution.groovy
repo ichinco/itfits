@@ -2,15 +2,16 @@ package com.itfits
 
 class UserClothingContribution {
 
-    User user
     Clothing clothing
 
+    static belongsTo = [user:User]
     static hasMany = [
         measurements:Measurement
     ]
 
     static constraints = {
         clothing nullable:true
+        user nullable: true
     }
 
     public Measurement findMeasurementByType(MeasurementType type){

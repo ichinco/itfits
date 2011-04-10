@@ -44,4 +44,16 @@ class UserService {
         user.measurements = measurements
         user.save()
     }
+
+    def deassociateClothing(User user, Clothing clothing){
+        def matchingContribution = user.contributions.find {
+            it.id == clothing.id
+        }
+
+        user.contributions.remove(matchingContribution)
+        user.save(flush:true)
+        matchingContribution.user = null;
+        matchingContribution.save()
+        return user.contributions
+    }
 }

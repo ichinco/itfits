@@ -206,4 +206,12 @@ class UserController {
 
         redirect(controller:"user", action:"dashboard")
     }
+
+    def removeClothing = {
+        Clothing clothing = Clothing.get(Long.parseLong(params["clothingId"]))
+        User user = springSecurityService.currentUser
+        def remainingContributions = userService.deassociateClothing(user,clothing)
+
+        render(template:"clothingList", model:['contributions' :remainingContributions])
+    }
 }

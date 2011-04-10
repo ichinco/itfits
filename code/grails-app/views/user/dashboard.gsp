@@ -9,8 +9,10 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
   <head>
+      <meta name="layout" content="fits_layout"/>
       <title>Welcome</title>
       <link rel="stylesheet" type="text/css" href="${resource(dir:'css',file:'dashboard.css',absolute:true)}" />
+      <g:javascript src="dashboard.js" />
   </head>
   <body>
     <div>Logged in: ${user.username}</div>
@@ -26,10 +28,8 @@
     <div>
       <g:link controller="search">Search</g:link> <br />
     </div>
-    <div>
-        <g:each in="${user.contributions}" var="contribution">
-            <g:render template="/search/result" model="['clothing':contribution.clothing]" />
-        </g:each>
+    <div class="closet">
+        <g:render template="clothingList" model="['contributions':user.contributions]" />
     </div>
   </body>
 </html>

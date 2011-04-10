@@ -10,6 +10,7 @@
 <html>
   <body>
     <div class="clothingItem">
+        <div class="id">${clothing.id}</div>
         <div class="clothingImage">
             <g:link controller="clothing" action="show"  params="['clothingId':clothing.id]">
                 <g:if test="${false}">
@@ -25,8 +26,8 @@
             <div class="tag">${tag.tag}</div>
         </g:each>
         <div class="userAction">
-            <img id="why" src="${resource(dir:'images', file:'why.png', absolute:tree)}" alt="why?" />
-            <img id="delete" src="${resource(dir:'images', file:'delete.png', absolute:tree)}" alt="delete" />
+            <img class="why" src="${resource(dir:'images', file:'why.png', absolute:tree)}" alt="why?" />
+            <img class="delete" src="${resource(dir:'images', file:'delete.png', absolute:tree)}" alt="delete" />
         </div>
         <div class="explanation">
             <div class="explanation-text">
