@@ -10,6 +10,7 @@
 <html>
   <head><title>Simple GSP page</title></head>
   <body>
+    <g:render template="searchUI" />
     <g:each in="${clothes}" var="clothing">
         <g:render template="result" model="['clothing':clothing]" /><br /><br />
     </g:each>
