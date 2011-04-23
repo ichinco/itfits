@@ -10,6 +10,7 @@ import javax.crypto.spec.SecretKeySpec;
 import org.apache.commons.codec.binary.Base64;
 import groovyx.net.http.*
 import static groovyx.net.http.ContentType.JSON
+import static groovyx.net.http.ContentType.XML
 import com.itfits.Clothing
 import com.itfits.ClothingBrand
 import com.itfits.ClothingType
@@ -20,7 +21,7 @@ class AmazonItemSearchService {
 
     def doApparelItemSearch(int page) {
         getAmazonUrl(GrailsConfig.itfits.amazon.searchUrl.replace("[responseGroup]",
-                                                                GrailsConfig.itfits.amazon.responseGroup.encodeAsURL()),
+                                                                GrailsConfig.itfits.amazon.responseGroup),
                 { resp, json ->
                     if (json.Items.Request.IsValid.equals("True") && !json.Items.Errors){
                         json.Items.Item.each({
@@ -56,31 +57,31 @@ class AmazonItemSearchService {
     }
 
     def getAmazonUrl(String url, success) {
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-        format.setTimeZone(TimeZone.getTimeZone("GMT"))
-        url += "&Timestamp=${format.format(Calendar.getInstance().getTime()).encodeAsURL()}"
-        String signature = createSignature(url,GrailsConfig.itfits.amazon.accessKeySecret)
-        url += "&Signature=${signature.encodeAsURL()}"
+        def signatureHelper = new SignedRequestsHelper(GrailsConfig.itfits.amazon.accessKeySecret)
+        def paramMap = [:]
+        url.split('\\?')[1].split("&").each {
+            def entry = it.split("=")
+            paramMap[entry[0]] = entry[1]
+        }
+        def finalUrl = signatureHelper.sign(paramMap)
 
-        def http = new HTTPBuilder(url)
-        http.request(Method.GET, JSON) {
+        def http = new HTTPBuilder(finalUrl)
+        http.request(Method.GET, XML) {
             response.success = success
         }
     }
 
     def createSignature(String url, String secretKey){
-        String parameterString = url.split("?")[1]
+        String parameterString = url.split('\\?')[1]
         def parameters = parameterString.split("&")
-        parameters.sort { a,b ->
-            ByteBuffer.wrap(a.bytes).compareTo(ByteBuffer.wrap(b.bytes))
-        }
-        def stringToSign = GrailsConfig.itfits.amazon.signaturePrepend + params.join("&")
+        parameters = parameters.sort { ByteBuffer.wrap(it.bytes) }
+        def stringToSign = GrailsConfig.itfits.amazon.signaturePrepend + parameters.join("&")
         String signature
         try {
             // initalize encoder with our secret key
             byte[] secretyKeyBytes = secretKey.getBytes("UTF-8");
             SecretKeySpec secretKeySpec = new SecretKeySpec(secretyKeyBytes, "HmacSHA256");
-            mac = Mac.getInstance("HmacSHA256");
+            def mac = Mac.getInstance("HmacSHA256");
             mac.init(secretKeySpec);
             // encode as sha-256
             byte[] data = stringToSign.getBytes("UTF-8");
