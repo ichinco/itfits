@@ -10,6 +10,15 @@
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
 // }
 
+itfits.amazon.accessKeyId = "1VH1V4VNZN4YQ7P9AXG2"
+itfits.amazon.accessKeySecret = "NGSanoamwXYvnKLvILahvMUv2OyHfQV08R1rD86P"
+itfits.amazon.apiVersion = "2009-03-31"
+itfits.amazon.service = "AWSECommerceService"
+itfits.amazon.associateTag = "trythaton-20"
+itfits.amazon.responseGroup = 'Medium'
+itfits.amazon.searchUrl = "http://ecs.amazonaws.com/onca/xml?Service=AWSECommerceService&AssociateTag=${itfits.amazon.associateTag}&AWSAccessKeyId=${itfits.amazon.accessKeyId}&Operation=ItemSearch&Version=${itfits.amazon.apiVersion}&SearchIndex=Apparel&BrowseNode=1036682&ResponseGroup=[responseGroup]"
+itfits.amazon.signaturePrepend="GET\nwebservices.amazon.com\n/onca/xml\n"
+
 grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
 grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
 grails.mime.use.accept.header = false

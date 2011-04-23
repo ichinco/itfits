@@ -4,9 +4,14 @@ class Clothing {
 
     ClothingBrand brand
     ClothingType type
+    String style
+    String merchantId
+    String imageUrl
+    String purchaseUrl
     String size
     boolean isWaterproof
     boolean isShear
+    String price
 
 
     static hasMany = [
