@@ -29,18 +29,14 @@ public class SignedRequestsHelper {
   private static final String HMAC_SHA256_ALGORITHM = "HmacSHA256";
   private static final String REQUEST_URI = "/onca/xml";
   private static final String REQUEST_METHOD = "GET";
+  private static final String endpoint = "ecs.amazonaws.com"; // must be lowercase
 
-  private String endpoint = "ecs.amazonaws.com"; // must be lowercase
-  private String awsSecretKey = "YOUR AWS SECRET KEY";
-
-  private SecretKeySpec secretKeySpec = null;
   private Mac mac = null;
 
   public SignedRequestsHelper(String secretKey) {
-      this.awsSecretKey = secretKey;
       try{
-        byte[] secretyKeyBytes = awsSecretKey.getBytes(UTF8_CHARSET);
-        secretKeySpec =
+        byte[] secretyKeyBytes = secretKey.getBytes(UTF8_CHARSET);
+        SecretKeySpec secretKeySpec =
           new SecretKeySpec(secretyKeyBytes, HMAC_SHA256_ALGORITHM);
         mac = Mac.getInstance(HMAC_SHA256_ALGORITHM);
         mac.init(secretKeySpec);
@@ -61,11 +57,9 @@ public class SignedRequestsHelper {
       + REQUEST_URI + "\n"
       + canonicalQS;
 
-    String hmac = hmac(toSign);
+    String hmac = hmac(toSign).replace("\r\n","");
     String sig = percentEncodeRfc3986(hmac);
-    String url = "http://" + endpoint + REQUEST_URI + "?" + canonicalQS + "&Signature=" + sig;
-
-    return url;
+    return "http://" + endpoint + REQUEST_URI + "?" + canonicalQS + "&Signature=" + sig;
   }
 
   private String hmac(String stringToSign) {
@@ -111,8 +105,7 @@ public class SignedRequestsHelper {
         buffer.append("&");
       }
     }
-    String cannoical = buffer.toString();
-    return cannoical;
+    return buffer.toString();
   }
 
   private String percentEncodeRfc3986(String s) {

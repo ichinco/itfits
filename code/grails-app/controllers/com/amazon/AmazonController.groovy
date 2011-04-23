@@ -6,5 +6,7 @@ class AmazonController {
 
     def index = {
         amazonItemSearchService.doApparelItemSearch(1);
+
+        redirect(controller:"search", action:"index")
     }
 }

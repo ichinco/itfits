@@ -23,16 +23,16 @@ class AmazonItemSearchService {
         getAmazonUrl(GrailsConfig.itfits.amazon.searchUrl.replace("[responseGroup]",
                                                                 GrailsConfig.itfits.amazon.responseGroup),
                 { resp, json ->
-                    if (json.Items.Request.IsValid.equals("True") && !json.Items.Errors){
+                    if (json.Items.Request.IsValid.equals("True") && json.Items.Errors.size.equals('')){
                         json.Items.Item.each({
-                            if (!Clothing.findByMerchantId(it.ASIN)){
+                            if (!Clothing.findByMerchantId(it.ASIN.toString())){
                                 Clothing clothing = new Clothing()
-                                clothing.merchantId = it.ASIN
+                                clothing.merchantId = it.ASIN.toString()
                                 clothing.style =
-                                clothing.purchaseUrl = it.DetailPageUrl
-                                clothing.imageUrl = it.MediumImage.URL
+                                clothing.purchaseUrl = it.DetailPageUrl.toString()
+                                clothing.imageUrl = it.MediumImage.URL.toString()
 
-                                ClothingBrand brand = ClothingBrand.findByBrandName(it.ItemAttributes.Brand)
+                                ClothingBrand brand = ClothingBrand.findByBrandName(it.ItemAttributes.Brand.toString())
                                 if (!brand){
                                     brand = new ClothingBrand()
                                     brand.brandName = it.ItemAttributes.Brand
@@ -48,6 +48,7 @@ class AmazonItemSearchService {
                                 }
 
                                 clothing.style = it.ItemAttributes.Title
+                                clothing.save()
                             }
                         })
                     } else {
@@ -69,29 +70,5 @@ class AmazonItemSearchService {
         http.request(Method.GET, XML) {
             response.success = success
         }
-    }
-
-    def createSignature(String url, String secretKey){
-        String parameterString = url.split('\\?')[1]
-        def parameters = parameterString.split("&")
-        parameters = parameters.sort { ByteBuffer.wrap(it.bytes) }
-        def stringToSign = GrailsConfig.itfits.amazon.signaturePrepend + parameters.join("&")
-        String signature
-        try {
-            // initalize encoder with our secret key
-            byte[] secretyKeyBytes = secretKey.getBytes("UTF-8");
-            SecretKeySpec secretKeySpec = new SecretKeySpec(secretyKeyBytes, "HmacSHA256");
-            def mac = Mac.getInstance("HmacSHA256");
-            mac.init(secretKeySpec);
-            // encode as sha-256
-            byte[] data = stringToSign.getBytes("UTF-8");
-            byte[] rawHmac = mac.doFinal(data);
-            Base64 encoder = new Base64();
-            signature = new String(encoder.encode(rawHmac));
-        } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException("UTF-8 is unsupported!", e);
-        };
-
-        return signature
     }
 }
