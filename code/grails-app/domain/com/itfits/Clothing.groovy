@@ -24,6 +24,14 @@ class Clothing {
     ]
 
     static constraints = {
+        brand nullable:true
+        type nullable:true
+        style nullable:true
+        merchantId nullable:true
+        imageUrl nullable:true
+        purchaseUrl nullable:true
+        size nullable:true
+        price nullable:true
     }
 
     def findMeasurementByType(MeasurementType type) {
