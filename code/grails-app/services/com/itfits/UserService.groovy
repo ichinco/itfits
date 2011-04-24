@@ -21,6 +21,8 @@ class UserService {
         assert roleList.size() != 0
         assert roleList[0].authority == "ROLE_USER"
 
+        newUser.updateReputation(ReputationWorthyAction.CREATE_ACCOUNT)
+
         if(!newUser.save())
         {
             return newUser.errors
@@ -42,6 +44,7 @@ class UserService {
 
     def saveMeasurements(User user, List<Measurement> measurements){
         user.measurements = measurements
+        user.updateReputation(ReputationWorthyAction.ADD_MEASUREMENTS)
         user.save()
     }
 

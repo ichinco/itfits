@@ -12,7 +12,7 @@
     <div class="clothingItem">
         <div class="id">${clothing.id}</div>
         <div class="clothingImage">
-            <g:link controller="clothing" action="show"  params="['clothingId':clothing.id]">
+            <g:link controller="clothing" action="show"  params="['clothingId':clothing.id]" title="${clothing.brand?.brandName} ${clothing.type?.displayName} ${clothing.style}">
                 <g:if test="${clothing.imageUrl}">
                     <img src="${clothing.imageUrl}" alt="${clothing.brand?.brandName} ${clothing.type?.displayName} ${clothing.style}" />
                 </g:if>

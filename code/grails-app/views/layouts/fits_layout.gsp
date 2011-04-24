@@ -15,6 +15,7 @@
       <g:layoutHead />
   </head>
   <body>
+      <div id="userInfo">${user?.username} ${user?.reputation ?: 0}</div>
       <g:layoutBody />
   </body>
 </html>
