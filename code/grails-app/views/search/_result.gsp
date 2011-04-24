@@ -14,10 +14,10 @@
         <div class="clothingImage">
             <g:link controller="clothing" action="show"  params="['clothingId':clothing.id]">
                 <g:if test="${clothing.imageUrl}">
-                    <img src="${clothing.imageUrl}" alt="${clothing.brand.brandName} ${clothing.type?.displayName}" />
+                    <img src="${clothing.imageUrl}" alt="${clothing.brand?.brandName} ${clothing.type?.displayName} ${clothing.style}" />
                 </g:if>
                 <g:else>
-                    <img src="${resource(dir:'images',file:'no_image.png',absolute:true)}" alt="${clothing.brand.brandName} ${clothing.type?.displayName}" />
+                    <img src="${resource(dir:'images',file:'no_image.png',absolute:true)}" alt="${clothing.brand?.brandName} ${clothing.type?.displayName} ${clothing.style}" />
                 </g:else>
             </g:link>
         </div>

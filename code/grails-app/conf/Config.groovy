@@ -19,6 +19,14 @@ itfits.amazon.responseGroup = 'Medium'
 itfits.amazon.searchUrl = "http://ecs.amazonaws.com/onca/xml?Service=AWSECommerceService&AssociateTag=${itfits.amazon.associateTag}&AWSAccessKeyId=${itfits.amazon.accessKeyId}&Operation=ItemSearch&Version=${itfits.amazon.apiVersion}&SearchIndex=Apparel&BrowseNode=1036682&ResponseGroup=[responseGroup]"
 itfits.amazon.signaturePrepend="GET\nwebservices.amazon.com\n/onca/xml\n"
 
+// these are only sandbox ids, need to be overridden in production
+itfits.ebay.devId = "376bfa95-db27-4280-868c-70bba522ebdc"
+itfits.ebay.appId = "DeniseIc-d127-46a3-86cb-4a24266dcde5"
+itfits.ebay.certId = "c44b6764-8999-486d-af83-87aec4f70fe8"
+itfits.ebay.version = "1.0.0"
+itfits.ebay.apparelCategory = "3082"
+itfits.ebay.searchUrl = "http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsByCategory&SERVICE-VERSION=${itfits.ebay.version}&SECURITY-APPNAME=${itfits.ebay.appId}&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&categoryId=${itfits.ebay.apparelCategory}"
+
 grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
 grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
 grails.mime.use.accept.header = false
