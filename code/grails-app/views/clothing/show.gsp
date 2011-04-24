@@ -20,7 +20,7 @@
                     <img src="${clothing.imageUrl}" alt="${clothing.brand.brandName} ${clothing.type?.displayName}" />
                 </g:if>
                 <g:else>
-                    <img src="${resource(dir:'images',file:'no_image.png',absolute:true)}" alt="${clothing.brand.brandName} ${clothing.type.displayName}" />
+                    <img src="${resource(dir:'images',file:'no_image.png',absolute:true)}" alt="${clothing.brand.brandName} ${clothing.type?.displayName}" />
                 </g:else>
             </g:link>
         </div>
