@@ -20,8 +20,7 @@ class AmazonItemSearchService {
     static transactional = true
 
     def doApparelItemSearch(int page) {
-        getAmazonUrl(GrailsConfig.itfits.amazon.searchUrl.replace("[responseGroup]",
-                                                                GrailsConfig.itfits.amazon.responseGroup),
+        getAmazonUrl(GrailsConfig.itfits.amazon.searchUrl.replace("[responseGroup]", GrailsConfig.itfits.amazon.responseGroup).replace("[page]", page.toString()),
                 { resp, json ->
                     if (json.Items.Request.IsValid.equals("True") && json.Items.Errors.size.equals('')){
                         json.Items.Item.each({

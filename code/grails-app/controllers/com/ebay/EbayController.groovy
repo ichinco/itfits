@@ -5,7 +5,7 @@ class EbayController {
     def ebayItemSearchService
 
     def index = {
-        ebayItemSearchService.doApparelItemSearch(1)
+        ebayItemSearchService.doApparelItemSearch(Integer.parseInt(["page"]))
         redirect(controller:"search", action:"index")
     }
 }

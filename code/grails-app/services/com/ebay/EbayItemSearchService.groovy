@@ -13,7 +13,7 @@ class EbayItemSearchService {
 
     def doApparelItemSearch(int page) {
 
-        def url = GrailsConfig.itfits.ebay.searchUrl
+        def url = GrailsConfig.itfits.ebay.searchUrl.replace("[page]",page)
         def http = new HTTPBuilder(url)
         http.request(Method.GET, XML) {
             response.success = {resp, xml ->
