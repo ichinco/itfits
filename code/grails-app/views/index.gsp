@@ -1,6 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
-  <head><title>Simple GSP page</title></head>
+
+  <head>
+      <title>Welcome to SilkThread</title>
+      <meta name="layout" content="main" />
+  </head>
   <g:javascript library="jquery" plugin="jquery"/>
   <link rel="stylesheet" href="${resource(dir:'css', file:'main.css')}">
   <script type="text/javascript">
