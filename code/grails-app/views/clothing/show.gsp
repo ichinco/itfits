@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
   <head>
-      <title>${clothing.brand.brandName} ${clothing.type?.displayName}</title>
+      <title>${clothing.brand?.brandName} ${clothing.type?.displayName} ${clothing.style}</title>
       <link rel="stylesheet" type="text/css" href="${resource(dir:'css',file:'display.css',absolute:true)}" />
   </head>
   <body>
@@ -17,17 +17,17 @@
         <div class="clothingImage">
             <g:link controller="clothing" action="show"  params="['clothingId':clothing.id]">
                 <g:if test="${clothing.imageUrl}">
-                    <img src="${clothing.imageUrl}" alt="${clothing.brand.brandName} ${clothing.type?.displayName}" />
+                    <img src="${clothing.imageUrl}" alt="${clothing.brand?.brandName} ${clothing.type?.displayName} ${clothing.style}" />
                 </g:if>
                 <g:else>
-                    <img src="${resource(dir:'images',file:'no_image.png',absolute:true)}" alt="${clothing.brand.brandName} ${clothing.type?.displayName}" />
+                    <img src="${resource(dir:'images',file:'no_image.png',absolute:true)}" alt="${clothing.brand?.brandName} ${clothing.type?.displayName} ${clothing.style}" />
                 </g:else>
             </g:link>
         </div>
     </div>
 
     <div class="info">
-        <div class="clothTitle">${clothing.brand.brandName} ${clothing.type?.displayName}</div>
+        <div class="clothTitle">${clothing.brand?.brandName} ${clothing.type?.displayName} ${clothing.style}</div>
         <g:each in="${clothing.materials}">
             <div class="clothMaterial">${it.name} (${it.percentComposition}&#37;)</div>
         </g:each>

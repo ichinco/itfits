@@ -14,6 +14,9 @@ class UserContributionService {
             contribution.save()
         }
 
+        user.updateReputation(ReputationWorthyAction.ADD_CLOTHES)
+        user.save()
+
         return contribution;
     }
 

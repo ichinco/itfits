@@ -17,6 +17,7 @@ class User {
     String emailAddress
     boolean confirmedEmail
     UserProfile userProfile
+    Integer reputation = 0
 
     static hasMany = [
         measurements : Measurement,
@@ -39,4 +40,19 @@ class User {
 	Set<Role> getAuthorities() {
 		UserRole.findAllByUser(this).collect { it.role } as Set
 	}
+
+    void updateReputation(ReputationWorthyAction action){
+        def reputationIncrement = ReputationAction.findByAction(action)
+        def reputationAddition = reputationIncrement ? reputationIncrement.reputation : 0
+        if (reputation){
+            reputation += reputationAddition
+        } else {
+            reputation = reputationAddition
+        }
+    }
+
+    boolean allowedTo(PrivledgeRequiredAction action){
+        def privledgeRequired = PrivledgeAction.findByAction(action)
+        return reputation >= (privledgeRequired ? privledgeRequired.reputation : 0)
+    }
 }
