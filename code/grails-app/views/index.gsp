@@ -14,7 +14,7 @@
           });
   </script>
   <body>
-    <div class="gradient"></div>
+    <!--
     <div class="titleBar shadow">
         <div class="titleLogo">itfits</div>
         <div class="titleItem"><g:link controller="user" action="register">register</g:link></div>
@@ -22,6 +22,6 @@
         <div class="titleItem"><g:link controller="logout">logout</g:link></div>
         <div class="titleItem"><g:link controller="search">search</g:link></div>
         <div class="titleItem"><g:link controller="user" action="dashboard">dashboard</g:link></div>
-    </div>
+    </div>-->
   </body>
 </html>

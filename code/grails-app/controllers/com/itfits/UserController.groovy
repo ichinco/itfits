@@ -52,20 +52,18 @@ class UserController {
     def dashboard =
     {
 
-        if(springSecurityService.isLoggedIn())
-        {
-            def model = [:]
-            model["user"] = springSecurityService.currentUser
+        def model = [:]
+        model["user"] = springSecurityService.currentUser
 
-            render(view:"/user/dashboard", model:model)
-        }
-        else
-        {
-            //config.successHandler.targetUrlParameter = "/user/dashboard"
-            //springSecurityService.successHandler.targetUrlParameter = "/user/dashboard"
+        render(view:"/user/dashboard", model:model)
+    }
 
-            redirect(view:"/login")
-        }
+    def userbar =
+    {
+        def model = [:]
+        model["user"] = springSecurityService.currentUser
+
+        render(template:"/layouts/main.gsp", model:model)
     }
 
     def seeall =

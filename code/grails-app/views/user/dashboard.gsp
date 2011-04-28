@@ -20,7 +20,7 @@
         <g:link controller="user" action="edit" params="[id:user.id]">edit</g:link>
     </div>
     <div>
-        <g:link controller="clothing" action="create" params="[id:user.id">create clothing</g:link>
+        <g:link controller="clothing" action="create" params="[id:user.id]">create clothing</g:link>
     </div>
                 <!-- [sounding like an ass:], passing id's is not necessary.
                 Blah blah blah, allow me to edit the clothing page so that

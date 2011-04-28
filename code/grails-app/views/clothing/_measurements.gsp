@@ -8,7 +8,7 @@
 
 <%@ page import="com.itfits.ClothingType" contentType="text/html;charset=UTF-8" %>
 <html>
-  <head><title>Simple GSP page</title></head>
+  <head></head>
         <body>
             <g:each in="${dimensions}" var="measurementDimension">
                 ${measurementDimension.measurementType.displayName}
