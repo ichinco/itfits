@@ -8,7 +8,7 @@ html {
 /* BODY */
 body {
     background: #040404;
-    height: 99%;
+    height: 100%;
     background-repeat: no-repeat;
     margin: 0;
 
@@ -17,7 +17,6 @@ body {
 
 
     color: #333;
-    font: 11px verdana, arial, helvetica, sans-serif;
 
     text-align: center;
 }
@@ -128,12 +127,6 @@ div.titleItem
     background: -moz-linear-gradient(top,  RGB(210, 230, 255),  #fff); /* for firefox 3.6+ */
 }
 
-
-
-#grailsLogo {
-	padding:20px;
-}
-
 a {
     color: #666;
     font-weight: bold;
@@ -152,17 +145,14 @@ h1 {
     margin: .8em 0 .3em 0;
 }
 
-ul {
-    padding-left: 15px;
-}
-
 input, select, textarea {
     background-color: #fcfcfc;
     border: 1px solid #ccc;
-    font: 11px verdana, arial, helvetica, sans-serif;
+    font: 11px Times New Roman, arial, Times New Roman, sans-serif;
     margin: 2px 0;
     padding: 2px 4px;
 }
+
 select {
    padding: 2px 2px 2px 0;
 }
@@ -170,10 +160,6 @@ textarea {
 	width: 250px;
 	height: 150px;
 	vertical-align: top;
-}
-
-input:focus, select:focus, textarea:focus {
-    border: 1px solid #b2d1ff;
 }
 
 .body {
@@ -253,47 +239,6 @@ td.errors textarea {
 }
 
 /* TABLES */
-
-table {
-    border: 1px solid #ccc;
-    width: 100%
-}
-tr {
-    border: 0;
-}
-td, th {
-    font: 11px verdana, arial, helvetica, sans-serif;
-    line-height: 12px;
-    padding: 5px 6px;
-    text-align: left;
-    vertical-align: top;
-}
-th {
-    background: #fff url(../images/skin/shadow.jpg);
-    color: #666;
-    font-size: 11px;
-    font-weight: bold;
-    line-height: 17px;
-    padding: 2px 6px;
-}
-th a:link, th a:visited, th a:hover {
-    color: #333;
-    display: block;
-    font-size: 10px;
-    text-decoration: none;
-    width: 100%;
-}
-th.asc a, th.desc a {
-    background-position: right;
-    background-repeat: no-repeat;
-}
-th.asc a {
-    background-image: url(../images/skin/sorted_asc.gif);
-}
-th.desc a {
-    background-image: url(../images/skin/sorted_desc.gif);
-}
-
 .odd {
     background: #f7f7f7;
 }

@@ -1,79 +1,133 @@
 <head>
-<meta name='layout' content='main' />
+<%--<meta name='layout' content='main' /> --%>
 <title>Login</title>
-<style type='text/css' media='screen'>
-#login {
-	margin:15px 0px; padding:0px;
-	text-align:center;
+
+<link rel="stylesheet" href="${resource(dir:'css',file:'main.css')}" />
+<style type='text/css'>
+
+#login
+{
+    display: table;
+    text-align: center;
 }
-#login .inner {
-	width:260px;
-	margin:0px auto;
-	text-align:left;
-	padding:10px;
-	border-top:1px dashed #499ede;
-	border-bottom:1px dashed #499ede;
-	background-color:#EEF;
+
+.inner
+{
+    display: table-cell;
+    vertical-align: middle;
+    width: 400px;
+    text-align: center;
 }
-#login .inner .fheader {
-	padding:4px;margin:3px 0px 3px 0;color:#2e3741;font-size:14px;font-weight:bold;
+
+.content
+{
+    display: inline-block;
+    text-align: left;
+    color: #aaa;
 }
-#login .inner .cssform p {
-	clear: left;
-	margin: 0;
-	padding: 5px 0 8px 0;
-	padding-left: 105px;
-	border-top: 1px dashed gray;
-	margin-bottom: 10px;
-	height: 1%;
+
+#login	{
+    /* for the naive script-less souls*/
+    margin-top: 20%;
+
+    display:table; /*position:static;*/
+    height: 40%;
+    width: 100%
 }
-#login .inner .cssform input[type='text'] {
-	width: 120px;
+
+.inner	{
+    display:table-cell;
+    vertical-align:middle;
+    /*position:static;*/
+
+    /* IE solution */
 }
-#login .inner .cssform label {
-	font-weight: bold;
-	float: left;
-	margin-left: -105px;
-	width: 100px;
+
+.text_
+{
+    height: 45px;
+    width: 250px;
+    font-size: 28px;
+    font-family: Times New Roman;
+    background-color: #ccc;
+
+    border: #469 solid 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+
+    background: -moz-linear-gradient(top, #fff, #abc);
+    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#abc));
+
 }
-#login .inner .login_message {color: RGB(255, 0, 0);}
-#login .inner .text_ {width:120px;}
-#login .inner .chk {height:12px;}
+
+.text_:focus
+{
+    background-color: #fff;
+}
+
+.authsubmit
+{
+    font-size: 30px;
+    font-family: Times New Roman;
+    border: 0px;
+    color: white;
+}
 </style>
 </head>
-
+<g:javascript library="jquery" plugin="jquery"/>
 <body>
 	<div id='login'>
 		<div class='inner'>
-			<g:if test='${flash.message}'>
-			<div class='login_message'>${flash.message}</div>
-			</g:if>
-			<div class='fheader'>Please Login..</div>
-			<form action='${postUrl}' method='POST' id='loginForm' class='cssform' autocomplete='off'>
-				<p>
-					<label for='username'>Login ID</label>
-					<input type='text' class='text_' name='j_username' id='username' />
-				</p>
-				<p>
-					<label for='password'>Password</label>
-					<input type='password' class='text_' name='j_password' id='password' />
-				</p>
-				<p>
-					<label for='remember_me'>Remember me</label>
-					<input type='checkbox' class='chk' name='${rememberMeParameter}' id='remember_me'
-					<g:if test='${hasCookie}'>checked='checked'</g:if> />
-				</p>
-				<p>
-					<input type='submit' value='Login' />
-				</p>
-			</form>
+            <g:if test='${flash.message}'>
+                <div class='login_message'>${flash.message}</div>
+                </g:if>
+            <div class="content">
+
+			    <div class='fheader'>LOGO</div>
+                <form action='${postUrl}' method='POST' id='loginForm' class='cssform' autocomplete='off'>
+                    <p>
+                        <input type='text' class='text_' name='j_username' id='username' /><br />
+                        <label for='username'>email</label>
+                    </p>
+                    <p>
+                        <input type='password' class='text_' name='j_password' id='password' /><br />
+                        <label for='password'>password</label>
+                    </p>
+                    <p>
+                        <label for='remember_me'>Remember me</label>
+                        <input type='checkbox' class='chk' name='${rememberMeParameter}' id='remember_me'
+                        <g:if test='${hasCookie}'>checked='checked'</g:if> />
+                    </p>
+                    <p>
+                        <input type='submit' class="buttons authsubmit" value='login' />
+                    </p>
+                </form>
+            </div>
 		</div>
 	</div>
 <script type='text/javascript'>
 <!--
-(function(){
-	document.forms['loginForm'].elements['j_username'].focus();
-})();
+function _main()
+{
+    // format IE 5+
+    if(document.attachEvent)
+    {
+        $('#login').css({"float": "left",
+                         "height": "50%",
+                         "margin-bottom": "-200px;"});
+
+        $('#login > .inner').css({
+            "clear": "both",
+            "height": "400px",
+            "position": "relative"
+        });
+    }
+}
+$(document).ready(_main);
+
 // -->
 </script>
 </body>
