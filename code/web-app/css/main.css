@@ -2,13 +2,12 @@ html {
     margin: 0;
     /*padding: 0; SELECT NOT DISPLAYED CORRECTLY IN FIREFOX */
 
-    height: 100%;
+    min-height: 100%;
 }
 
 /* BODY */
 body {
     background: #040404;
-    height: 100%;
     background-repeat: no-repeat;
     margin: 0;
 
@@ -128,14 +127,12 @@ div.titleItem
 }
 
 a {
-    color: #666;
     font-weight: bold;
     text-decoration: none;
 }
 
 a:hover
 {
-    color: #fff;
 }
 
 h1 {
@@ -303,6 +300,8 @@ td.errors textarea {
 /* ACTION BUTTONS */
 .buttons
 {
+    color: #fff;
+
     display: inline;
 
     border-radius: 5px;
@@ -354,4 +353,14 @@ td.errors textarea {
 {
     display: inline;
     font-size: 15px;
+}
+
+.bold
+{
+    font-weight: 600;
+}
+
+.medium
+{
+    font-size: 12px;
 }

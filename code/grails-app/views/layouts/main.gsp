@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="${resource(dir:'css',file:'main.css')}" />
         <%--<link rel="shortcut icon" href="${resource(dir:'images',file:'favicon.ico')}" type="image/x-icon" />--%>
         <g:layoutHead />
-        <g:javascript library="jquery" plugin="jquery"/>
+        <g:javascript library="jquery" plugin="jquery" />
     </head>
     <body>
         <!-- logo atop -->
@@ -14,7 +14,7 @@
         <div id="userBar">
             <g:if test="${user == null}">
                 <div class="buttons partiallyOpaque signup">sign up</div>
-                <div class="buttons partiallyOpaque login">login</div>
+                <g:link controller="login" action="auth"><div class="buttons partiallyOpaque login">login</div></g:link>
             </g:if>
             <g:else>
                 <div class="heading">
@@ -25,6 +25,5 @@
         </div>
         <div id="topLine"></div>
         <g:layoutBody />
-
     </body>
 </html>
