@@ -3,6 +3,7 @@ package com.itfits
 class UserClothingContribution {
 
     Clothing clothing
+    String size
 
     static belongsTo = [user:User]
     static hasMany = [

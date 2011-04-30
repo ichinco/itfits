@@ -59,7 +59,6 @@ class ClothingController {
 
         model["isWaterproof"] = params.waterproof=="on"
         model["isShear"] = params.shear=="on"
-        model["size"] = params.size
         model["tags"] = params.tags.split(' ').collect {tagService.findTag(it.toString())}
 
         Clothing clothing
@@ -69,7 +68,7 @@ class ClothingController {
             clothing = clothingService.createClothing(model)
         }
 
-        UserClothingContribution contribution = userContributionService.createContribution(User.get(Long.parseLong(params.userId)), clothing)
+        UserClothingContribution contribution = userContributionService.createContribution(User.get(Long.parseLong(params.userId)), clothing, params.size)
         model["measurements"] = ClothingType.valueOf(params.clothingType).relevantDimensions.collect {
             userContributionService.createMeasurement(it.measurementType,
             Double.parseDouble(params.get("measurement_${it.measurementType}".toString()).toString()),

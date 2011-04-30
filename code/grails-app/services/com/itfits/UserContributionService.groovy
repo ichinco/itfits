@@ -4,12 +4,13 @@ class UserContributionService {
 
     static transactional = true
 
-    def createContribution(User user, Clothing clothing) {
+    def createContribution(User user, Clothing clothing, String size) {
         UserClothingContribution contribution = UserClothingContribution.findByUserAndClothing(user,clothing);
         if (!contribution){
             contribution = new UserClothingContribution();
             contribution.user = user
             contribution.clothing = clothing
+            contribution.size = size
 
             contribution.save()
         }

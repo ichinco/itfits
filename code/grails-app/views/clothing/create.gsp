@@ -19,7 +19,7 @@
         brand: <input type="text" id="brand" name="brand" autocomplete="off" value="${clothing.brand?.brandName}" /><br />
         <div id="brandSuggestion"><span>blah</span></div>
         type: <g:select from="${ClothingType.values()}" id="clothingType" name="clothingType" value="${clothing.type}" optionValue="displayName" />
-        size: <input type="text" name="size" value="${clothing.size}"/><br />
+        size: <input type="text" name="size" value="${contribution.size}"/><br />
         Is it waterproof: <g:checkBox name="waterproof" value="${clothing.isWaterproof}"/><br />
         Does it shear: <g:checkBox name="shear" value="${clothing.isShear}" /><br />
         <div class="measurements">

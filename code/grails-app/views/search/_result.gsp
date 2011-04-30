@@ -21,7 +21,6 @@
                 </g:else>
             </g:link>
         </div>
-        <div class="clothSize">We recommend size: ${clothing.size}</div>
         <g:each in="${clothing.tags}" var="tag">
             <div class="tag">${tag.tag}</div>
         </g:each>

@@ -8,14 +8,12 @@ class Clothing {
     String merchantId
     String imageUrl
     String purchaseUrl
-    String size
     boolean isWaterproof
     boolean isShear
     String price
 
-
     static hasMany = [
-        measurements:Measurement,
+        contributions:UserClothingContribution,
         reviews:Review,
         ratings:ClothingRating,
         tags:Tag,
@@ -30,14 +28,15 @@ class Clothing {
         merchantId nullable:true
         imageUrl nullable:true
         purchaseUrl nullable:true
-        size nullable:true
         price nullable:true
     }
 
     def findMeasurementByType(MeasurementType type) {
-        for (Measurement measurement : measurements){
-            if (measurement.type.equals(type)){
-                return measurement;
+        for (UserClothingContribution contribution : contributions){
+            for (Measurement measurement : contribution.measurements){
+                if (measurement.type.equals(type)){
+                    return measurement;
+                }
             }
         }
 
