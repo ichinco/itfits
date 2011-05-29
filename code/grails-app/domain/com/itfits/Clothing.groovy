@@ -18,7 +18,8 @@ class Clothing {
         ratings:ClothingRating,
         tags:Tag,
         colors:Color,
-        materials:ClothingMaterial
+        materials:ClothingMaterial,
+        votes:VoteRecord
     ]
 
     static constraints = {

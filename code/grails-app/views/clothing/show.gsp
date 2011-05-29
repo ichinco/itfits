@@ -9,8 +9,11 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
   <head>
+      <meta name="layout" content="fits_layout" />
       <title>${clothing.brand?.brandName} ${clothing.type?.displayName} ${clothing.style}</title>
       <link rel="stylesheet" type="text/css" href="${resource(dir:'css',file:'display.css',absolute:true)}" />
+      <link rel="stylesheet" type="text/css" href="${resource(dir:'css',file:'voting.css',absolute:true)}" />
+      <g:javascript src="voting.js"/>
   </head>
   <body>
     <div class="clothingItem">
@@ -38,5 +41,10 @@
             <div class="waterproof">is waterproof</div>
         </g:if>
     </div>
+
+    <br />
+    <g:render template="/voting/vote" model="['elements' : occasions, 'type':'occasion', 'title':'I\'d wear this to...', 'clothingId':clothing.id]" />
+    <br />
+    <g:render template="/voting/vote" model="['elements' : styles, 'type':'style', 'title':'The style is:', 'clothingId': clothing.id]"/>
   </body>
 </html>

@@ -21,7 +21,9 @@ class User {
 
     static hasMany = [
         measurements : Measurement,
-        contributions : UserClothingContribution
+        contributions : UserClothingContribution,
+        upvoted : VoteRecord,
+        downvoted : VoteRecord
     ]
 
 	static constraints = {

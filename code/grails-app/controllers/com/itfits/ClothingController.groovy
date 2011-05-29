@@ -81,9 +81,30 @@ class ClothingController {
     def show = {
         def id = params.clothingId
         Clothing clothing = Clothing.get(id)
+        User user = springSecurityService.currentUser
+
+        def styles = []
+        def occasions = []
+        for (VoteRecord record : clothing.votes){
+            def upvoted = (user && user.upvoted.contains(record));
+            def downvoted = (user && user.downvoted.contains(record));
+            def recordMap = [record : record,
+                            upvoted: upvoted,
+                            downvoted: downvoted]
+            switch(record.type.type){
+                case "style":
+                    styles.add(recordMap);
+                    break;
+                case "occasion":
+                    occasions.add(recordMap);
+                    break;
+            }
+        }
 
         def model = [:]
         model["clothing"] = clothing
+        model["styles"] = styles.sort { }
+        model["occasions"] = occasions
 
         render(view:"/clothing/show", model:model)
     }
