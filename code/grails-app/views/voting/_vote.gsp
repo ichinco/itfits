@@ -24,6 +24,6 @@
             <div class="${voteClass}" id="${record.id}"> ${record.type.name} </div>
             <br />
         </g:each>
-        <g:textField name="voteOther" class="voteOther"/>
+        <g:textField name="voteOther" class="voteOther" value=""/>
     </div>
 </html>

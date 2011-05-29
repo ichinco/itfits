@@ -46,5 +46,10 @@
     <g:render template="/voting/vote" model="['elements' : occasions, 'type':'occasion', 'title':'I\'d wear this to...', 'clothingId':clothing.id]" />
     <br />
     <g:render template="/voting/vote" model="['elements' : styles, 'type':'style', 'title':'The style is:', 'clothingId': clothing.id]"/>
+
+    <iframe src="http://www.facebook.com/plugins/like.php?href=${request.scheme + "://" + request.serverName + request.forwardURI}"
+            scrolling="no" frameborder="0"
+            style="border:none; width:450px; height:80px">
+    </iframe>
   </body>
 </html>
