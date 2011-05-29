@@ -14,6 +14,12 @@ class ClothingService {
         return updateClothing(clothing, model)
     }
 
+    def notClothes(long id){
+        Clothing clothing = Clothing.get(id)
+        clothing.isClothing = false
+        clothing.save()
+    }
+
     private updateClothing(Clothing clothing, model){
         model.each {
             clothing.setProperty(it.key, it.value)

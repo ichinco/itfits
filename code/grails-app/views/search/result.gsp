@@ -25,6 +25,7 @@
     <script src="http://yui.yahooapis.com/2.8.2r1/build/colorpicker/colorpicker-min.js" type="text/javascript"></script>
 
     <script type="text/javascript" charset="UTF-8" src="${resource(dir:'js', file:"searchui.js")}"></script>
+    <script type="text/javascript" charset="UTF-8" src="${resource(dir:'js', file:"search_item.js")}"></script>
     <script type="text/javascript">
         function searchUI_init()
         {

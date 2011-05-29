@@ -10,6 +10,7 @@ class Clothing {
     String purchaseUrl
     boolean isWaterproof
     boolean isShear
+    boolean isClothing
     String price
 
     static hasMany = [
@@ -42,5 +43,9 @@ class Clothing {
         }
 
         return null;
+    }
+
+    def create() {
+        isClothing = true;
     }
 }

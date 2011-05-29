@@ -78,6 +78,12 @@ class ClothingController {
         redirect (action:show, params:[id: clothing.id])
     }
 
+    def notClothes = {
+        clothingService.notClothes(Long.parseLong(params.clothingId))
+
+        render(text:"")
+    }
+
     def show = {
         def id = params.clothingId
         Clothing clothing = Clothing.get(id)

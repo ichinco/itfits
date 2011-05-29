@@ -4,7 +4,7 @@ class SearchController {
 
     def index = {
         // if no cloths, return [], otherwise all the cloths in the db
-        List<Clothing> clothes = (Clothing.count() > 0)? Clothing.all : [];
+        List<Clothing> clothes = (Clothing.count() > 0)? Clothing.findAllWhere(isClothing:true) : [];
 
         def model = [:]
         model["clothes"] = clothes

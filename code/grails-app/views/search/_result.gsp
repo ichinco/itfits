@@ -27,6 +27,7 @@
         <div class="userAction">
             <img class="why" src="${resource(dir:'images', file:'why.png', absolute:tree)}" alt="why?" />
             <img class="delete" src="${resource(dir:'images', file:'delete.png', absolute:tree)}" alt="delete" />
+            <div class="not-clothes" url="/code/clothing/notClothes?clothingId=${clothing.id}">not clothes</div>
         </div>
         <div class="explanation">
             <div class="explanation-text">
