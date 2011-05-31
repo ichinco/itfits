@@ -13,6 +13,9 @@ class Clothing {
     boolean isClothing
     String price
 
+    Date dateCreated
+    Date lastUpdated
+
     static hasMany = [
         contributions:UserClothingContribution,
         reviews:Review,

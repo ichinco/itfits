@@ -18,6 +18,14 @@ $().ready( function() {
             vote(target.val(), getElementType(target), getClothingId(target));
         }
     });
+
+    $("#submitReview").click(function(eventObject){
+        var text = $("#userReview").val();
+        var params = {};
+        params.clothingId = $(eventObject.target).attr("clothingId");
+        params.reviewText = text;
+        $.post($(eventObject.target).attr("url"), params);
+    });
 });
 
 var getClothingId = function(target){

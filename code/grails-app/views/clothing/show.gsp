@@ -42,14 +42,31 @@
         </g:if>
     </div>
 
-    <br />
-    <g:render template="/voting/vote" model="['elements' : occasions, 'type':'occasion', 'title':'I\'d wear this to...', 'clothingId':clothing.id]" />
-    <br />
-    <g:render template="/voting/vote" model="['elements' : styles, 'type':'style', 'title':'The style is:', 'clothingId': clothing.id]"/>
+  <iframe src="http://www.facebook.com/plugins/like.php?href=${request.scheme + "://" + request.serverName + request.forwardURI}"
+          scrolling="no" frameborder="0"
+          style="border:none; width:450px; height:80px">
+  </iframe>
 
-    <iframe src="http://www.facebook.com/plugins/like.php?href=${request.scheme + "://" + request.serverName + request.forwardURI}"
-            scrolling="no" frameborder="0"
-            style="border:none; width:450px; height:80px">
-    </iframe>
+  <div class="categories">
+        <g:render template="/voting/vote" model="['elements' : occasions, 'type':'occasion', 'title':'I\'d wear this to...', 'clothingId':clothing.id]" />
+        <br />
+        <g:render template="/voting/vote" model="['elements' : styles, 'type':'style', 'title':'The style is:', 'clothingId': clothing.id]"/>
+  </div>
+  
+  <div>
+      <g:each in="${clothing.reviews}" var="review">
+          <div class="reviewUser">${review.user.username}</div>
+          <div class="reviewRepuation">${review.user.reputation}</div>
+          <div class="reviewDate">${review.dateCreated}</div>
+          <br />
+          <div class="reviewText">${review.text}</div>
+      </g:each>
+      <g:if test="${request.signedIn}">
+          <g:textArea id="userReview" name="userReview" rows="5" cols="50"/>
+          <br />
+          <g:submitButton id="submitReview" name="submitReview" value="submit" url="/code/review/submit" clothingId="${clothing.id}" />
+      </g:if>
+  </div>
+
   </body>
 </html>

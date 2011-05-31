@@ -7,6 +7,9 @@ class Color {
     int b
     int g
 
+    Date dateCreated
+    Date lastUpdated
+
     static constraints = {
     }
 }

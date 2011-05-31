@@ -7,6 +7,9 @@ class ClothingRating {
     User user
     Clothing clothing
 
+    Date dateCreated
+    Date lastUpdated
+
     static constraints = {
     }
 }

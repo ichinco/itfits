@@ -6,6 +6,8 @@ class VoteRecord {
     VoteType type
     int upvotes
     int downvotes
+    Date dateCreated
+    Date lastUpdated
 
     static constraints = {
     }

@@ -19,6 +19,9 @@ class User {
     UserProfile userProfile
     Integer reputation = 0
 
+    Date dateCreated
+    Date lastUpdated
+
     static hasMany = [
         measurements : Measurement,
         contributions : UserClothingContribution,

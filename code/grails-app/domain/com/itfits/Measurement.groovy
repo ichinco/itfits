@@ -7,6 +7,9 @@ class Measurement {
     MeasurementDegree degree
     UserClothingContribution contribution
 
+    Date dateCreated
+    Date lastUpdated
+
     static constraints = {
         contribution nullable:true
     }

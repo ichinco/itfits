@@ -4,6 +4,8 @@ class UserClothingContribution {
 
     Clothing clothing
     String size
+    Date dateCreated
+    Date lastUpdated
 
     static belongsTo = [user:User]
     static hasMany = [

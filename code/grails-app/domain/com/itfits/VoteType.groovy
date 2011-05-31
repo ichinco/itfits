@@ -4,6 +4,8 @@ class VoteType {
 
     String name
     String type
+    Date dateCreated
+    Date lastUpdated
 
     static constraints = {
     }

@@ -14,8 +14,10 @@
       <link rel="stylesheet" type="text/css" href="${resource(dir:'css',file:'autocomplete.css',absolute:true)}" />
       <g:layoutHead />
   </head>
-  <body>
-      <div id="userInfo">${user?.username} ${user?.reputation ?: 0}</div>
-      <g:layoutBody />
+<body>
+    <g:if test="${request.signedIn}">
+        <div id="userInfo">${user?.username} ${user?.reputation ?: 0}</div>
+    </g:if>
+    <g:layoutBody />
   </body>
 </html>
