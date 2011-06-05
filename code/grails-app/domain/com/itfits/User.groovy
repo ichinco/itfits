@@ -60,4 +60,34 @@ class User {
         def privledgeRequired = PrivledgeAction.findByAction(action)
         return reputation >= (privledgeRequired ? privledgeRequired.reputation : 0)
     }
+
+    def computeUserStyleVoteMap() {
+        def styleVoteMap = [:]
+
+        for (VoteRecord upvote : this.upvoted){
+            def styles = upvote.clothing.votes.collect {
+                if (it.type.type=="style") {
+                    it.type.name
+                }
+            }
+            for (Style style : styles){
+                if (styleVoteMap.containsKey(style)){
+                    styleVoteMap.put(style,styleVoteMap.get(style)+1)
+                } else {
+                    styleVoteMap.put(style,1)
+                }
+            }
+        }
+
+        double total = 0;
+        styleVoteMap.values().each { total += it }
+
+        if (total != 0){
+            styleVoteMap.entrySet().each {
+                it.setValue((it.getValue()/total)*100)
+            }
+        }
+
+        return styleVoteMap
+    }
 }

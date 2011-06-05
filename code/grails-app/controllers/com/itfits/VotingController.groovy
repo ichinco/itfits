@@ -17,5 +17,7 @@ class VotingController {
         User user = (User) springSecurityService.currentUser
 
         votingService.incrementVote(type,name,clothing, user)
+
+        render(text:"")
     }
 }
