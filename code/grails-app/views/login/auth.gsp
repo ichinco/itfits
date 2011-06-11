@@ -125,6 +125,8 @@ function _main()
             "position": "relative"
         });
     }
+
+    $('#username').focus();
 }
 $(document).ready(_main);
 

@@ -14,11 +14,17 @@
         <div id="userBar">
             <g:if test="${user == null}">
                 <div class="buttons partiallyOpaque signup">sign up</div>
-                <g:link controller="login" action="auth"><div class="buttons partiallyOpaque login">login</div></g:link>
+                <g:link controller="login" action="auth">
+                    <div class="buttons partiallyOpaque login">login</div>
+                </g:link>
             </g:if>
             <g:else>
                 <div class="heading">
-                    welcome <div class="buttons">${user.username} </div>
+                    welcome
+                    <g:link controller="user" action="dashboard">
+                        <div class="buttons partiallyOpaque signup" style="margin-right:-4px;">${user.username}</div>
+                    </g:link>
+                    <g:link controller="logout"><div class="buttons partiallyOpaque login">logout</div></g:link>
                 </div>
             </g:else>
         </div>
