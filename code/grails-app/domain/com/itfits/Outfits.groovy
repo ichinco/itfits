@@ -16,6 +16,7 @@ class Outfits {
     Date lastUpdated
 
     static hasMany = [
+        cloths:Clothing,
         reviews:Review,
         ratings:ClothingRating,
         tags:Tag,
