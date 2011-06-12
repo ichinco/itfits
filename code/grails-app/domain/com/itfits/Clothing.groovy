@@ -1,6 +1,6 @@
 package com.itfits
 
-class Clothing {
+class Clothing extends Reviewable {
 
     ClothingBrand brand
     ClothingType type
