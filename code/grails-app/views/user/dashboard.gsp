@@ -15,22 +15,8 @@
       <g:javascript library="jquery" plugin="jquery"/>
       <g:javascript src="dashboard.js" />
   </head>
-  <body>
-    <div class="sidebar">
-        <div class="sidebarIcon selected">
-            <img class="sidebarIcon" src="${resource(dir:'images', file: "blueflower.png")}" /><br />
-            my wardrobe
-        </div>
-        <div class="sidebarIcon">
-            <g:link controller="user" action="edit" params="[id:user.id]">
-                <img class="sidebarIcon" src="${resource(dir:'images', file:'butterfly.png')}" /><br />
-                me</g:link>
-        </div>
-        <div class="sidebarIcon" >
-          <g:link controller="search">Search</g:link> <br />
-        </div>
-    </div>
 
+  <body>
     <div class="container">
         <g:link controller="clothing" action="create" params="[id:user.id]">add cloth</g:link>
         <g:render template="clothingList" model="['contributions':user.contributions]" />

@@ -7,7 +7,7 @@ class BootstrapFilters {
     def filters = {
         all(controller:'*', action:'*') {
             before = {
-                request["signedIn"] = springSecurityService.currentUser ? true : false;
+                request["user"] = springSecurityService.currentUser;
 
                 return true;
             }

@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
   <head>
-      <meta name="layout" content="fits_layout" />
+      <meta name="layout" content="main" />
       <title>${clothing.brand?.brandName} ${clothing.type?.displayName} ${clothing.style}</title>
       <link rel="stylesheet" type="text/css" href="${resource(dir:'css',file:'display.css',absolute:true)}" />
       <link rel="stylesheet" type="text/css" href="${resource(dir:'css',file:'voting.css',absolute:true)}" />

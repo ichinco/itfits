@@ -6,6 +6,8 @@
         <%--<link rel="shortcut icon" href="${resource(dir:'images',file:'favicon.ico')}" type="image/x-icon" />--%>
         <g:layoutHead />
         <g:javascript library="jquery" plugin="jquery" />
+        <link rel="stylesheet" type="text/css" href="${resource(dir:'css',file:'autocomplete.css',absolute:true)}" />
+        <link rel="stylesheet" type="text/css" href="${resource(dir:'css',file:'navigation.css',absolute:true)}" />
     </head>
     <body>
         <!-- logo atop -->
@@ -30,6 +32,21 @@
         </div>
         </div>
         <div id="topLine"></div>
+        <div class="sidebar">
+            <div class="sidebarIcon selected">
+                <img class="sidebarIcon" src="${resource(dir:'images', file: "blueflower.png")}" /><br />
+                my wardrobe
+            </div>
+            <div class="sidebarIcon">
+                <g:link controller="user" action="edit" params="[id:user.id]">
+                    <img class="sidebarIcon" src="${resource(dir:'images', file:'butterfly.png')}" /><br />
+                    me</g:link>
+            </div>
+            <div class="sidebarIcon" >
+              <g:link controller="search">Search</g:link> <br />
+            </div>
+        </div>
+
         <g:layoutBody />
     </body>
 </html>
