@@ -133,6 +133,40 @@ class UserController {
     }
 
     @Secured(["ROLE_USER"])
+    def changePassword = {
+        def userInstance = User.get(params.id)
+        if (userInstance) {
+            if (params.version) {
+                def version = params.version.toLong()
+                if (userInstance.version > version) {
+
+                    userInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'user.label', default: 'User')] as Object[], "Another user has updated this User while you were editing")
+                    render(view: "edit", model: [userInstance: userInstance])
+                    return
+                }
+            }
+            if (params["password"] == params["reEnterPassword"]) {
+                userInstance.password = springSecurityService.encodePassword(params["password"])
+                if (!userInstance.hasErrors() && userInstance.save(flush: true)) {
+                    flash.message = "${message(code: 'default.updated.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])}"
+                    redirect(action: "show", id: userInstance.id)
+                }
+                else {
+                    render(view: "edit", model: [userInstance: userInstance])
+                }
+            } else {
+                flash.message = "${message(code: 'default.passwordmismatch.message', default: "passwords must match")}"
+                render(view: "edit", model: [userInstance: userInstance])
+            }
+
+        }
+        else {
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), params.id])}"
+            redirect(action: "list")
+        }
+    }
+
+    @Secured(["ROLE_USER"])
     def update = {
         def userInstance = User.get(params.id)
         if (userInstance) {

@@ -10,7 +10,7 @@
 <html>
   <body>
     <g:each in="${contributions}" var="contribution">
-        <g:render template="/search/result" model="['clothing':contribution.clothing]" />
+        %{--<g:render template="/search/result" model="['clothing':contribution.clothing]" />--}%
     </g:each>
   </body>
 </html>
