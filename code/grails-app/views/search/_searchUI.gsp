@@ -33,16 +33,6 @@
         </div>
         <div class="searchExpander">advanced <div class="searchGraphic">+</div></div>
         <div class="searchAdvancedContainer">
-              <div class="label searchsubtitle">size</div>
-              <div class="formblock">
-                <input type="checkbox" name="size" value="XS" /><div class="label">XS</div>
-                <input type="checkbox" name="size" value="S" /><div class="label">S</div>
-                <input type="checkbox" name="size" value="M" /><div class="label">M</div>
-                <input type="checkbox" name="size" value="L" /><div class="label">L</div>
-                <input type="checkbox" name="size" value="XL" /><div class="label">XL</div>
-              </div>
-            <div class="searchExpander">enter measurements <div class="searchGraphic">+</div></div>
-            <br />
             <div class="label searchsubtitle">color</div>
             <div class="formblock">
                 <input type="checkbox" name="color" /><div class="searchSwatch">white</div>

@@ -9,7 +9,6 @@ package com.itfits
  */
 class Outfit {
     String style
-    String price
     String description
 
     Date dateCreated

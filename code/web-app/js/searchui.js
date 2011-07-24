@@ -7,7 +7,7 @@ $().ready( function() {
     });
 });
 
-function SUI_format(JSONFormatter)
+function SUI_format()
 {
     // turn all the color-swatches to their colors
     $(".searchSwatch").each(function(index)
