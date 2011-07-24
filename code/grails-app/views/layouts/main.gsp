@@ -22,10 +22,10 @@
             </g:if>
             <g:else>
                 <div class="heading">
-                    welcome
                     <g:link controller="user" action="dashboard">
                         <div class="buttons partiallyOpaque signup" style="margin-right:-4px;">${user.username}</div>
                     </g:link>
+                     <g:link controller="user" action="edit" params="[id:user.id]"><div class="buttons partiallyOpaque settings">settings</div></g:link>
                     <g:link controller="logout"><div class="buttons partiallyOpaque login">logout</div></g:link>
                 </div>
             </g:else>
@@ -33,17 +33,14 @@
         </div>
         <div id="topLine"></div>
         <div class="sidebar">
-            <div class="sidebarIcon selected">
-                <img class="sidebarIcon" src="${resource(dir:'images', file: "blueflower.png")}" /><br />
-                my wardrobe
+            <div class="sidebarIcon ${ params.controller == 'user' && params.action == 'dashboard' ? 'selected' : ''}">
+                <g:link controller="user" action="dashboard">Me</g:link> <br />
             </div>
-            <div class="sidebarIcon">
-                <g:link controller="user" action="edit" params="[id:user.id]">
-                    <img class="sidebarIcon" src="${resource(dir:'images', file:'butterfly.png')}" /><br />
-                    me</g:link>
-            </div>
-            <div class="sidebarIcon" >
+            <div class="sidebarIcon ${ params.controller == 'search' ? 'selected' : ''}" >
               <g:link controller="search">Search</g:link> <br />
+            </div>
+            <div class="sidebarIcon ${ params.controller == 'outfit' ? 'selected' : ''}" >
+              <g:link controller="outfits">outfits</g:link> <br />
             </div>
         </div>
 
