@@ -7,7 +7,7 @@ package com.itfits
  * Time: 10:26 AM
  * To change this template use File | Settings | File Templates.
  */
-class Outfits {
+class Outfit {
     String style
     String price
     String description
@@ -22,7 +22,8 @@ class Outfits {
         colors:Color,
         materials:ClothingMaterial,
         votes:VoteRecord,
-        imageUrls:String
+        imageUrls:String,
+        reviews:OutfitReview
     ]
 
     static constraints = {

@@ -18,7 +18,7 @@ class Clothing {
 
     static hasMany = [
         contributions:UserClothingContribution,
-        reviews:Review,
+        reviews:ClothingReview,
         ratings:ClothingRating,
         tags:Tag,
         colors:Color,
