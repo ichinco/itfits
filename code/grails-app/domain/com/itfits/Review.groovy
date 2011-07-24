@@ -7,7 +7,7 @@ class Review {
     Date dateCreated
     Date lastUpdated
 
-    static belongsTo = [ review : Reviewable ]
+    static belongsTo = [ clothing : Clothing ]
 
     static constraints = {
 

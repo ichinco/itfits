@@ -51,9 +51,11 @@ class UserController {
     @Secured(["ROLE_USER"])
     def dashboard =
     {
-
         def model = [:]
         model["user"] = springSecurityService.currentUser
+        model["likedItems"] = springSecurityService.currentUser.upvoted.collect({
+            it.clothing
+        })
 
         render(view:"/user/dashboard", model:model)
     }

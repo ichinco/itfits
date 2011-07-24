@@ -7,7 +7,7 @@ package com.itfits
  * Time: 10:26 AM
  * To change this template use File | Settings | File Templates.
  */
-class Outfits extends Reviewable {
+class Outfits {
     String style
     String price
     String description
@@ -17,7 +17,6 @@ class Outfits extends Reviewable {
 
     static hasMany = [
         cloths:Clothing,
-        reviews:Review,
         ratings:ClothingRating,
         tags:Tag,
         colors:Color,

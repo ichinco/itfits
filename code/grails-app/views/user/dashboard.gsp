@@ -17,9 +17,6 @@
   </head>
 
   <body>
-    <div class="container">
-        <g:link controller="clothing" action="create" params="[id:user.id]">add cloth</g:link>
-        <g:render template="clothingList" model="['contributions':user.contributions]" />
-    </div>
+    <g:render template="clothBar" model="['clothing':likedItems]" />
   </body>
 </html>

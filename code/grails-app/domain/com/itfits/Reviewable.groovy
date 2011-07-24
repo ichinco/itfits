@@ -7,5 +7,5 @@ package com.itfits
  * Time: 12:05 PM
  * To change this template use File | Settings | File Templates.
  */
-class Reviewable {
+interface Reviewable {
 }
