@@ -16,7 +16,7 @@
   </head>
 
   <body>
-    <g:link controller="outfit" action="create">Create Outfit</g:link>
+    <g:render template="/outfit/list" model="[outfits: user.outfits]" />
     <g:render template="clothBar" model="['clothing':likedItems]" />
   </body>
 </html>

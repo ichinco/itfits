@@ -15,10 +15,10 @@
   <body>
     <g:form controller="outfit" action="createOutfit" method="POST">
         <input type="hidden" name="userId" value="${user.id}" />
-        name: <input type="text" name="name" /> <br />
-        description: <input type="text" name="description" />  <br />
+        name: <input type="text" name="name" value="${outfit.name}" /> <br />
+        description: <input type="text" name="description" value="${outfit.description}" />  <br />
         tags: <g:textField name="tags" value="${outfit.tags?.collect {it.tag}?.join(' ')}" /> <br />
-        <input type="hidden" name="clothingIds" value="" />
+        <input type="hidden" name="clothingIds" value="outfit.clothes?.collect{it.id}.join(',')" />
         <input type="submit" value="Done!" />
     </g:form>
   </body>
