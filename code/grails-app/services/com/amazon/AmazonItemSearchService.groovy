@@ -50,6 +50,7 @@ class AmazonItemSearchService {
 
                                 clothing.style = it.ItemAttributes.Title
                                 if (clothing.type != null){
+                                    clothing.isClothing = true;
                                     clothing.save()
                                 }
                             }
