@@ -41,20 +41,6 @@
                 <input type="checkbox" name="color" /><div class="searchSwatch">green</div>
                 <input type="checkbox" name="color" /><div class="searchSwatch">blue</div>
             </div>
-            <div class="searchExpander">more colors and schemes <div class="searchGraphic">+</div></div>
-            <br />
-            <div class="label searchsubtitle">review</div>
-            <div class="formblock">
-              <select name="brand">
-                  <option>0</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-              </select>
-              <div class="label">stars and up</div>
-            </div>
             <br />
             <div class="label searchsubtitle">price</div>
             <div class="formblock">

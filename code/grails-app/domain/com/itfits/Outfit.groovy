@@ -8,7 +8,7 @@ package com.itfits
  * To change this template use File | Settings | File Templates.
  */
 class Outfit {
-    String style
+    String name
     String description
 
     Date dateCreated
@@ -16,19 +16,13 @@ class Outfit {
 
     static hasMany = [
         cloths:Clothing,
-        ratings:ClothingRating,
         tags:Tag,
-        colors:Color,
-        materials:ClothingMaterial,
-        votes:VoteRecord,
         imageUrls:String,
         reviews:OutfitReview
     ]
 
     static constraints = {
-        style nullable:true
         description nullable:true
         imageUrls nullable:true
-        price nullable:true
     }
 }

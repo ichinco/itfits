@@ -12,11 +12,11 @@
       <meta name="layout" content="main"/>
       <title>Welcome</title>
       <link rel="stylesheet" type="text/css" href="${resource(dir:'css',file:'dashboard.css',absolute:true)}" />
-      <g:javascript library="jquery" plugin="jquery"/>
       <g:javascript src="dashboard.js" />
   </head>
 
   <body>
+    <g:link controller="outfit" action="create">Create Outfit</g:link>
     <g:render template="clothBar" model="['clothing':likedItems]" />
   </body>
 </html>
