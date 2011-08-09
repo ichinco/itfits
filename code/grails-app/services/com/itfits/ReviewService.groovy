@@ -11,4 +11,13 @@ class ReviewService {
         review.clothing = clothing
         review.save()
     }
+
+    def createRating(RatingDimension dimension, int value, int userId, int clothingId) {
+        ClothingRating rating = new ClothingRating();
+        rating.clothing = Clothing.get(clothingId)
+        rating.dimension = dimension
+        rating.rating = value
+        rating.user = User.get(userId)
+        rating.save()
+    }
 }

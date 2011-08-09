@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="com.itfits.RatingDimension" contentType="text/html;charset=UTF-8" %>
 <html>
   <head>
       <meta name="layout" content="main" />
@@ -53,6 +53,18 @@
         <g:render template="/voting/vote" model="['elements' : occasions, 'type':'occasion', 'title':'I\'d wear this to...', 'clothingId':clothing.id]" />
         <br />
         <g:render template="/voting/vote" model="['elements' : styles, 'type':'style', 'title':'The style is:', 'clothingId': clothing.id]"/>
+  </div>
+
+  <div>
+      <g:each in="${RatingDimension.values()}"  var="dimension">
+          <div>
+              ${dimension.displayName}
+              <g:each in="${[1,2,3,4,5]}" var="i">
+                  <g:link controller="review" action="rate" params="[value:i, userId:user.id, clothingId:clothing.id, dimension:dimension.toString()]">*</g:link>
+              </g:each>
+              <br />
+          </div>
+      </g:each>
   </div>
   
   <div>
