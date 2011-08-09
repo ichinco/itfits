@@ -63,7 +63,7 @@
           <br />
           <div class="reviewText">${review.text}</div>
       </g:each>
-      <g:if test="${request.signedIn}">
+      <g:if test="${request.user}">
           <g:textArea id="userReview" name="userReview" rows="5" cols="50"/>
           <br />
           <g:submitButton id="submitReview" name="submitReview" value="submit" url="/code/review/submit" clothingId="${clothing.id}" />

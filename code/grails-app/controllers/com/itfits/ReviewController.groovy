@@ -17,6 +17,9 @@ class ReviewController {
             reviewService.createReview(text, user, clothing)
         }
 
-        render(text:"")
+        def params = [:]
+        params.clothingId = id;
+
+        redirect(controller:"clothing", action:"show", params:params)
     }
 }
