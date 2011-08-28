@@ -44,6 +44,11 @@
 
   <g:link controller="outfit" action="add" params="[clothing:clothing.id]">Add to an outfit</g:link>
 
+  <g:if test="${user}">
+      <br />
+      <g:link controller="clothingContribution" action="owned" params="[clothingId:clothing.id, userId:user.id, size:0]">I own this!</g:link>
+  </g:if>
+
   <iframe src="http://www.facebook.com/plugins/like.php?href=${request.scheme + "://" + request.serverName + request.forwardURI}"
           scrolling="no" frameborder="0"
           style="border:none; width:450px; height:80px">
