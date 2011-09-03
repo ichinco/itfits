@@ -2,69 +2,103 @@ package com.itfits
 
 class RecommendationService {
 
-    def userGroupService
+    private static final GET_TOTAL_TAGS = "select count(total) from TagAggregate"
+    def sessionFactory
 
-    private def generateExemplars(){
-        def exemplars = []
-        for (Style style : Style.all){
-            def records = VoteRecord.findAllByType(style,[max:20, sort:"upvotes", order:"desc"])
-            exemplars.add(records)
+    def repopulateAggregatesForTag(VoteType tag){
+        def aggregate = TagAggregate.findByTag(tag)
+        if (!aggregate){
+            aggregate = new TagAggregate()
+            aggregate.setTag(tag)
         }
-        Random random = new Random()
-        return exemplars.sort({ return random.nextInt(3)-1 })
+        aggregate.setTotal(VoteRecord.findAllByType(tag).size())
+        aggregate.save()
     }
 
-    private def generateRecommendationsForGroup(UserStyleGroup group){
-        def upvoteMap = [:]
-
-        for (User user in group.users){
-            for (VoteRecord record in user.upvoted){
-                if (!upvoteMap.containsKey(record)){
-                    upvoteMap.put(record,0)
-                }
-
-                upvoteMap.put(record,upvoteMap.get(record)+1)
+    def repopulateAggregatesForUser(User user){
+        def voteTypeLikeMap = [:]
+        UserTagAggregate.findByUser(user).each({
+            voteTypeLikeMap[it.tag] = it
+            it.totalLikes = 1
+            it.totalDislikes = 0
+        })
+        user.upvoted.each({ Clothing cloth ->
+            if (cloth instanceof ClothingVote){
+                cloth.votes.each({ VoteRecord vote ->
+                    if (!(vote instanceof ClothingVote)){
+                        if (!voteTypeLikeMap.containsKey(vote.type)){
+                            def aggregate = new UserTagAggregate()
+                            aggregate.user = user
+                            aggregate.tag = vote.type
+                            aggregate.totalLikes = 1
+                            aggregate.totalDislikes = 1
+                            voteTypeLikeMap[vote.type] = aggregate
+                        }
+                    }
+                    voteTypeLikeMap[vote.type].totalLikes++
+                })
             }
-        }
-
-        def recommended = upvoteMap.entrySet().sort({ a, b ->
-            if (a.getValue() < b.getValue()){
-                return -1
-            } else if (a.getValue() == b.getValue()){
-                return 0
-            } else {
-                return 1
+        })
+        user.downvoted.each({ Clothing cloth ->
+            if (cloth instanceof ClothingVote){
+                cloth.votes.each({ VoteRecord vote ->
+                    if (!(vote instanceof ClothingVote)){
+                        if (!voteTypeLikeMap.containsKey(vote.type)){
+                            def aggregate = new UserTagAggregate()
+                            aggregate.user = user
+                            aggregate.tag = vote.type
+                            aggregate.totalLikes = 1
+                            aggregate.totalDislikes = 1
+                            voteTypeLikeMap[vote.type] = aggregate
+                        }
+                    }
+                    voteTypeLikeMap[vote.type].totalLikes--
+                })
             }
-        }).collect({it.getKey().clothing})
+        })
 
-        return recommended
+        voteTypeLikeMap.values.each({
+            it.save();
+        });
     }
 
-    private def generateRecommendationListForGroup(UserStyleGroup group){
-        List<Clothing> recommendations = generateRecommendationsForGroup(group)
-        List<Clothing> exemplars = generateExemplars()
-        exemplars.eachWithIndex {it, i->
-            int index = i*10+i
-            if (recommendations.size() > index){
-                recommendations.add(index,it)
-            } else {
-                recommendations.add(it)
+    def getProbabilityUserLikesClothes(User user, Clothing clothing){
+        def tagAggregates = [:]
+        UserTagAggregate.findByUser(user).each({
+            tagAggregates[it.type] = it
+        })
+
+        def aggregate = 1;
+        for (VoteRecord record : clothing.votes) {
+            def userTagAggregate = tagAggregates[record.type]
+            def probability = userTagAggregate.totalLikes/(userTagAggregate.totalLikes + userTagAggregate.totalDislikes)
+            aggregate *= probability
+        }
+
+        def upvotes = 0
+        def downvotes = 0
+        user.upvoted.each({
+            if (it instanceof ClothingVote){ upvotes++ }
+        })
+        user.downvoted.each({
+            if (it instanceof ClothingVote){ downvotes++ }
+        })
+
+        def userLiking = upvotes / (upvotes + downvotes)
+        def tagProbability = 1;
+
+        clothing.votes.each({
+            if (!(it.type instanceof ClothingVote)){
+                tagProbability *= (TagAggregate.findByTag(it.type).total)/getTotal()
             }
-        }
+        });
 
-        group.recommendedClothes = recommendations
-        group.save()
+        return (userLiking * aggregate) / tagProbability
     }
 
-    private def generateAllRecommendationsForGroups(){
-        for (UserStyleGroup group : UserStyleGroup.all){
-            generateRecommendationListForGroup(group)
-        }
-    }
-
-    def putPeopleInGroupsAndGenerateRecommendations(){
-        userGroupService.createGroupsAndDistributeUsers()
-        generateAllRecommendationsForGroups()
+    def getTotal(){
+        def query = sessionFactory.getCurrentSession().createQuery(GET_TOTAL_TAGS)
+        return (int) query.uniqueResult();
     }
 
 }
