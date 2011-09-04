@@ -12,13 +12,6 @@ $().ready( function() {
         vote(target.id, getElementType(target.parent()), getClothingId(target.parent()));
     });
 
-    $(".voteOther").keypress(function(eventObject){
-        var target=$(eventObject.target);
-        if (eventObject.keyCode == 13){
-            vote(target.val(), getElementType(target), getClothingId(target));
-        }
-    });
-
     $("#submitReview").click(function(eventObject){
         var text = $("#userReview").val();
         var params = {};

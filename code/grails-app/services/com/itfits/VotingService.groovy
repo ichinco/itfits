@@ -6,10 +6,10 @@ class VotingService {
 
     def getVotingElement(String type, String elementId, String clothingId) {
         def clothing = Clothing.get(Long.parseLong(clothingId))
-        def voteType = VoteType.findByTypeAndName(type,elementId);
+        def voteType = VoteType.findByNameAndType(elementId,type)
         if (!voteType){
-            voteType = new VoteType();
-            voteType.type = type;
+            voteType = new VoteType()
+            voteType.type = type
             voteType.name = elementId;
             voteType.save()
         }
@@ -19,6 +19,7 @@ class VotingService {
             voteRecord = new VoteRecord()
             voteRecord.clothing = clothing;
             voteRecord.type = voteType;
+            voteRecord.save()
         }
 
         return voteRecord

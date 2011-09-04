@@ -8,9 +8,9 @@ class VoteType {
     Date lastUpdated
 
     static constraints = {
+        type(insert:false, update:false)
     }
 
     static mapping = {
-        discriminator "type"
     }
 }

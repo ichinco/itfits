@@ -3,3 +3,4 @@ code/*.iml
 code/target
 code/test
 code/*~
+code/out/*

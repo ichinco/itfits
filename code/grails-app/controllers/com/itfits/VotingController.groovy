@@ -18,6 +18,6 @@ class VotingController {
 
         votingService.incrementVote(type,name,clothing, user)
 
-        render(text:"")
+        redirect(controller:'clothing', action:'show', params:['clothingId':clothing])
     }
 }

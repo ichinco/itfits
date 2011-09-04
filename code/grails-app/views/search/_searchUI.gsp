@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="com.itfits.ClothingType" contentType="text/html;charset=UTF-8" %>
 <html>
   <body>
     <g:form action="POST" name="search">
@@ -20,29 +20,31 @@
         </div>
         <div class="formblock">
           <div class="label">clothing type</div>
-          <input name="clothingType:" value="jeans" />
+            <select name="clothingType">
+                <g:each in="${ClothingType.values()}">
+                    <g:if test="${it.isClothing}">
+                        <option>${it.displayName}</option>
+                    </g:if>
+                </g:each>
+            </select>
         </div>
         <div class="formblock">
-          <div class="label">brand:</div>
-          <select name="brand">
-            <option>automatically</option>
-            <option>generated</option>
-            <option>via</option>
-            <option>GSP</option>
-          </select>
+          <div class="label">occasion</div>
+            <select name="occasion">
+                <g:each in="${occasions}">
+                    <option>${it}</option>
+                </g:each>
+            </select>
         </div>
-        <div class="searchExpander">advanced <div class="searchGraphic">+</div></div>
+        <div class="formblock">
+          <div class="label">style</div>
+            <select name="style">
+                <g:each in="${styles}">
+                    <option>${it}</option>
+                </g:each>
+            </select>
+        </div>
         <div class="searchAdvancedContainer">
-            <div class="label searchsubtitle">color</div>
-            <div class="formblock">
-                <input type="checkbox" name="color" /><div class="searchSwatch">white</div>
-                <input type="checkbox" name="color" /><div class="searchSwatch">black</div>
-                <input type="checkbox" name="color" /><div class="searchSwatch">red</div>
-                <input type="checkbox" name="color" /><div class="searchSwatch">green</div>
-                <input type="checkbox" name="color" /><div class="searchSwatch">blue</div>
-            </div>
-            <br />
-            <div class="label searchsubtitle">price</div>
             <div class="formblock">
               <div class="label">price range:</div>
               <select name="brand">
@@ -54,19 +56,6 @@
                   <option>Custom</option>
               </select>
               <br />
-              <div class="formblock">
-                <div class="label">from $</div><input class="priceInput" name="custPriceLower" />
-                <div class="label"> to $</div><input class="priceInput" name="custPriceHigher" />
-              </div>
-            </div>
-            <div class="formblock">
-              <input type="checkbox" name="isAvailToBuy"/><div class="label">available for purchase</div>
-            </div>
-            <div class="formblock">
-                <div class="searchExpander"> materials <div class="searchGraphic">+</div></div>
-            </div>
-            <div class="formblock">
-                <div class="searchExpander"> discounts <div class="searchGraphic">+</div></div>
             </div>
         </div>
       </div>
