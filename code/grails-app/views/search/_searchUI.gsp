@@ -9,7 +9,7 @@
 <%@ page import="com.itfits.ClothingType" contentType="text/html;charset=UTF-8" %>
 <html>
   <body>
-    <g:form action="POST" name="search">
+    <g:form controller="search" action="search">
       <div class="searchContainer">
         <div class="label searchtitle">search</div>
         <input type="submit" class="searchbutton" value="SUBMIT"/>
@@ -31,6 +31,7 @@
         <div class="formblock">
           <div class="label">occasion</div>
             <select name="occasion">
+                <option>all</option>
                 <g:each in="${occasions}">
                     <option>${it}</option>
                 </g:each>
@@ -39,6 +40,7 @@
         <div class="formblock">
           <div class="label">style</div>
             <select name="style">
+                <option>all</option>
                 <g:each in="${styles}">
                     <option>${it}</option>
                 </g:each>
@@ -47,13 +49,13 @@
         <div class="searchAdvancedContainer">
             <div class="formblock">
               <div class="label">price range:</div>
-              <select name="brand">
+              <select name="price">
+                  <option>all</option>
                   <option>Under $25</option>
                   <option>$25 - $50</option>
                   <option>$50 - $75</option>
                   <option>$75 - $100</option>
                   <option>$100 and above</option>
-                  <option>Custom</option>
               </select>
               <br />
             </div>

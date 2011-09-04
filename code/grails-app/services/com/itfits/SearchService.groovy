@@ -9,24 +9,22 @@ class SearchService {
                double lowPrice, double highPrice, ClothingBrand brand) {
         def criteria = Clothing.createCriteria()
         def clothes = criteria {
-            between("price", lowPrice, highPrice)
+//            between("price", lowPrice, highPrice)
             eq("brand", brand)
             eq("type", type)
             votes {
                 and {
-                    eq("type",occasion)
-                    gt("upvotes", "downvotes")
+                    eq("type", occasion)
                 }
             }
             votes {
                 and {
                     eq("type", style)
-                    gt("upvotes", "downvotes")
                 }
             }
         }
 
-        clothes.sort({recommendationService.getProbabilityUserLikesClothes(user, it)})
+//        clothes.sort({recommendationService.getProbabilityUserLikesClothes(user, it)})
         return clothes
     }
 
