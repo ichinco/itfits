@@ -3,7 +3,6 @@
 div.searchContainer
 {
     background-color: RGB(150, 200, 255);
-    width: 300px;
     height: 100%;
     font-family: helvetica;
     color: black;
@@ -62,3 +61,6 @@ div.searchSwatch
     overflow: hidden;
     border: black solid 1px;
 }
+
+div.search_navigation { float:left; width: 20% }
+div.results { float: left; width: 80% }

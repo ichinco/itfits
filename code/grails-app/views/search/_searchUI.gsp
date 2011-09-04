@@ -33,16 +33,6 @@
         </div>
         <div class="searchExpander">advanced <div class="searchGraphic">+</div></div>
         <div class="searchAdvancedContainer">
-              <div class="label searchsubtitle">size</div>
-              <div class="formblock">
-                <input type="checkbox" name="size" value="XS" /><div class="label">XS</div>
-                <input type="checkbox" name="size" value="S" /><div class="label">S</div>
-                <input type="checkbox" name="size" value="M" /><div class="label">M</div>
-                <input type="checkbox" name="size" value="L" /><div class="label">L</div>
-                <input type="checkbox" name="size" value="XL" /><div class="label">XL</div>
-              </div>
-            <div class="searchExpander">enter measurements <div class="searchGraphic">+</div></div>
-            <br />
             <div class="label searchsubtitle">color</div>
             <div class="formblock">
                 <input type="checkbox" name="color" /><div class="searchSwatch">white</div>
@@ -50,20 +40,6 @@
                 <input type="checkbox" name="color" /><div class="searchSwatch">red</div>
                 <input type="checkbox" name="color" /><div class="searchSwatch">green</div>
                 <input type="checkbox" name="color" /><div class="searchSwatch">blue</div>
-            </div>
-            <div class="searchExpander">more colors and schemes <div class="searchGraphic">+</div></div>
-            <br />
-            <div class="label searchsubtitle">review</div>
-            <div class="formblock">
-              <select name="brand">
-                  <option>0</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-              </select>
-              <div class="label">stars and up</div>
             </div>
             <br />
             <div class="label searchsubtitle">price</div>

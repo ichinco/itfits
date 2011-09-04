@@ -1,6 +1,6 @@
 package com.itfits
 
-class Clothing extends Reviewable {
+class Clothing {
 
     ClothingBrand brand
     ClothingType type
@@ -18,7 +18,7 @@ class Clothing extends Reviewable {
 
     static hasMany = [
         contributions:UserClothingContribution,
-        reviews:Review,
+        reviews:ClothingReview,
         ratings:ClothingRating,
         tags:Tag,
         colors:Color,

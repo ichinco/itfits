@@ -20,6 +20,8 @@ class ClothingService {
         clothing.save()
     }
 
+    def userOwnsClothing
+
     private updateClothing(Clothing clothing, model){
         model.each {
             clothing.setProperty(it.key, it.value)

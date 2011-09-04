@@ -7,9 +7,8 @@ package com.itfits
  * Time: 10:26 AM
  * To change this template use File | Settings | File Templates.
  */
-class Outfits extends Reviewable {
-    String style
-    String price
+class Outfit {
+    String name
     String description
 
     Date dateCreated
@@ -17,19 +16,13 @@ class Outfits extends Reviewable {
 
     static hasMany = [
         cloths:Clothing,
-        reviews:Review,
-        ratings:ClothingRating,
         tags:Tag,
-        colors:Color,
-        materials:ClothingMaterial,
-        votes:VoteRecord,
-        imageUrls:String
+        imageUrls:String,
+        reviews:OutfitReview
     ]
 
     static constraints = {
-        style nullable:true
         description nullable:true
         imageUrls nullable:true
-        price nullable:true
     }
 }

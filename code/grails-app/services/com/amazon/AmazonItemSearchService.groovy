@@ -24,10 +24,9 @@ class AmazonItemSearchService {
                 { resp, json ->
                     if (json.Items.Request.IsValid.equals("True") && json.Items.Errors.size.equals('')){
                         json.Items.Item.each({
-                            if (!Clothing.findByMerchantId(it.ASIN.toString())){
+                            if (!Clothing.findByMerchantId(it.ASIN.toString()) && it){
                                 Clothing clothing = new Clothing()
                                 clothing.merchantId = it.ASIN.toString()
-                                clothing.style =
                                 clothing.purchaseUrl = it.DetailPageUrl.toString()
                                 clothing.imageUrl = it.MediumImage.URL.toString()
 
@@ -42,12 +41,18 @@ class AmazonItemSearchService {
                                 clothing.price = it.OfferSummary.LowestNewPrice.FormattedPrice
 
                                 try{
-                                    clothing.type = ClothingType.valueOf(it.ItemAttributes.ProductTypeName)
+                                    ClothingType type = ProductTypeName.valueOf(it.ItemAttributes.ProductTypeName.toString()).getType()
+                                    clothing.type = type
                                 } catch (Exception e){
+                                    clothing.type = null
+                                    System.out.println("Unknown type: " + it.ItemAttributes.ProductTypeName);
                                 }
 
                                 clothing.style = it.ItemAttributes.Title
-                                clothing.save()
+                                if (clothing.type != null){
+                                    clothing.isClothing = true;
+                                    clothing.save()
+                                }
                             }
                         })
                     } else {

@@ -1,13 +1,10 @@
 package com.itfits
 
-class Review {
+class ClothingVote extends VoteType {
 
-    User user
-    String text
     Date dateCreated
     Date lastUpdated
 
     static constraints = {
-
     }
 }

@@ -6,10 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="com.itfits.RatingDimension" contentType="text/html;charset=UTF-8" %>
 <html>
   <head>
-      <meta name="layout" content="fits_layout" />
+      <meta name="layout" content="main" />
       <title>${clothing.brand?.brandName} ${clothing.type?.displayName} ${clothing.style}</title>
       <link rel="stylesheet" type="text/css" href="${resource(dir:'css',file:'display.css',absolute:true)}" />
       <link rel="stylesheet" type="text/css" href="${resource(dir:'css',file:'voting.css',absolute:true)}" />
@@ -42,6 +42,13 @@
         </g:if>
     </div>
 
+  <g:link controller="outfit" action="add" params="[clothing:clothing.id]">Add to an outfit</g:link>
+
+  <g:if test="${user}">
+      <br />
+      <g:link controller="clothingContribution" action="owned" params="[clothingId:clothing.id, userId:user.id, size:0]">I own this!</g:link>
+  </g:if>
+
   <iframe src="http://www.facebook.com/plugins/like.php?href=${request.scheme + "://" + request.serverName + request.forwardURI}"
           scrolling="no" frameborder="0"
           style="border:none; width:450px; height:80px">
@@ -52,6 +59,18 @@
         <br />
         <g:render template="/voting/vote" model="['elements' : styles, 'type':'style', 'title':'The style is:', 'clothingId': clothing.id]"/>
   </div>
+
+  <div>
+      <g:each in="${RatingDimension.values()}"  var="dimension">
+          <div>
+              ${dimension.displayName}
+              <g:each in="${[1,2,3,4,5]}" var="i">
+                  <g:link controller="review" action="rate" params="[value:i, userId:user.id, clothingId:clothing.id, dimension:dimension.toString()]">*</g:link>
+              </g:each>
+              <br />
+          </div>
+      </g:each>
+  </div>
   
   <div>
       <g:each in="${clothing.reviews}" var="review">
@@ -61,7 +80,7 @@
           <br />
           <div class="reviewText">${review.text}</div>
       </g:each>
-      <g:if test="${request.signedIn}">
+      <g:if test="${request.user}">
           <g:textArea id="userReview" name="userReview" rows="5" cols="50"/>
           <br />
           <g:submitButton id="submitReview" name="submitReview" value="submit" url="/code/review/submit" clothingId="${clothing.id}" />

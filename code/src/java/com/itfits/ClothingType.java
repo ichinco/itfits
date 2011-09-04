@@ -10,6 +10,16 @@ package com.itfits;
 public enum ClothingType {
     PANTS("pants", new MeasurementDimension[]{new MeasurementDimension<Integer>(MeasurementType.INSEAM), new MeasurementDimension<Integer>(MeasurementType.RISE)}),
     DRESS("dress", new MeasurementDimension[]{}),
+    BLAZER("blazer", new MeasurementDimension[]{}),
+    ACCESSORY("accessory", new MeasurementDimension[]{}),
+    OUTERWEAR("outerwear", new MeasurementDimension[]{}),
+    SHIRT("shirt", new MeasurementDimension[]{}),
+    SWEATER("sweater", new MeasurementDimension[]{}),
+    SHORTS("shorts", new MeasurementDimension[]{}),
+    APPAREL("apparel", new MeasurementDimension[]{}),
+    SWIMWEAR("swimwear", new MeasurementDimension[]{}),
+    SKIRT("skirt", new MeasurementDimension[]{}),
+    SOCKS("socks", new MeasurementDimension[]{}),
     HUMAN_FEMALE("girl", new MeasurementDimension[]{new MeasurementDimension<Integer>(MeasurementType.INSEAM), new MeasurementDimension<Integer>(MeasurementType.RISE)}),
     HUMAN_MALE("guy", new MeasurementDimension[]{ new MeasurementDimension<Integer>(MeasurementType.NECK)});
 

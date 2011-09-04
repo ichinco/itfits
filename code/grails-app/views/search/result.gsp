@@ -9,11 +9,11 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
   <head>
-      <meta name="layout" content="fits_layout" />
-      <link rel="stylesheet" type="text/css" href="${resource(dir:'css',file:'search.css',absolute:true)}" />
-      <g:javascript src="searchui.js" />
-      <link rel="stylesheet" href="${resource(dir:'css', file:'searchUI.css')}" />
-      <link rel="stylesheet" href="${resource(dir:'css', file:'forms.css')}" />
+    <meta name="layout" content="main" />
+    <link rel="stylesheet" type="text/css" href="${resource(dir:'css',file:'search.css',absolute:true)}" />
+    <g:javascript src="searchui.js" />
+    <link rel="stylesheet" href="${resource(dir:'css', file:'searchUI.css')}" />
+    <link rel="stylesheet" href="${resource(dir:'css', file:'forms.css')}" />
 
     <!-- YUI internet sources -->
     <!-- Dependencies -->
@@ -30,27 +30,18 @@
         function searchUI_init()
         {
           SUI_format();
-          /*
-          var picker = new YAHOO.widget.ColorPicker("colorpicker",
-            {
-              showhsvcontrols: false,
-              showhexcontrols: false,
-              images: {
-                PICKER_THUMB: "picker_thumb.png",
-                HUE_THUMB: "hue_thumb.png"
-              }
-            });
-
-          alert($("#colorpicker").css("position", "absolute"));
-          */
         }
         $(document).ready(searchUI_init);
     </script>
   </head>
   <body>
-    <g:render template="searchUI" />
-    <g:each in="${clothes}" var="clothing">
-        <g:render template="result" model="['clothing':clothing]" />
-    </g:each>
+    <div class="search_navigation">
+        <g:render template="searchUI" />
+    </div>
+    <div class="results">
+        <g:each in="${clothes}" var="clothing">
+            <g:render template="result" model="['clothing':clothing]" />
+        </g:each>
+    </div>
   </body>
 </html>

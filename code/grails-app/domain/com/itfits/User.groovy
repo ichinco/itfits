@@ -26,7 +26,8 @@ class User {
         measurements : Measurement,
         contributions : UserClothingContribution,
         upvoted : VoteRecord,
-        downvoted : VoteRecord
+        downvoted : VoteRecord,
+        outfits : Outfit
     ]
 
 	static constraints = {
