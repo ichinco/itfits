@@ -65,7 +65,12 @@
           <div>
               ${dimension.displayName}
               <g:each in="${[1,2,3,4,5]}" var="i">
-                  <g:link controller="review" action="rate" params="[value:i, userId:user.id, clothingId:clothing.id, dimension:dimension.toString()]">*</g:link>
+                  <g:if test="${user}">
+                      <g:link controller="review" action="rate" params="[value:i, userId:user.id, clothingId:clothing.id, dimension:dimension.toString()]">*</g:link>
+                  </g:if>
+                  <g:else>
+                      *
+                  </g:else>
               </g:each>
               <br />
           </div>

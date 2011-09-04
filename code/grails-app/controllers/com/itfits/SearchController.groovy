@@ -8,6 +8,8 @@ class SearchController {
 
         def model = [:]
         model["clothes"] = clothes
+        model["occasions"] = VoteType.findAllByType("occasion").collect { it.name }
+        model["styles"] = VoteType.findAllByType("style").collect { it.name }
 
         render(view:"/search/result", model:model)
     }

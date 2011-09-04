@@ -24,6 +24,10 @@
             <div class="${voteClass}" id="${record.id}"> ${record.type.name} </div>
             <br />
         </g:each>
-        <g:textField name="voteOther" class="voteOther" value=""/>
+        <g:form controller="voting" action="cast" >
+            <g:hiddenField name="type" value="${type}" />
+            <g:hiddenField name="clothing" value="${clothingId}"/>
+            <g:textField name="elementId" class="voteOther" value=""/>
+        </g:form>
     </div>
 </html>

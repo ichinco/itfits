@@ -8,26 +8,28 @@ package com.itfits;
  * To change this template use File | Settings | File Templates.
  */
 public enum ClothingType {
-    PANTS("pants", new MeasurementDimension[]{new MeasurementDimension<Integer>(MeasurementType.INSEAM), new MeasurementDimension<Integer>(MeasurementType.RISE)}),
-    DRESS("dress", new MeasurementDimension[]{}),
-    BLAZER("blazer", new MeasurementDimension[]{}),
-    ACCESSORY("accessory", new MeasurementDimension[]{}),
-    OUTERWEAR("outerwear", new MeasurementDimension[]{}),
-    SHIRT("shirt", new MeasurementDimension[]{}),
-    SWEATER("sweater", new MeasurementDimension[]{}),
-    SHORTS("shorts", new MeasurementDimension[]{}),
-    APPAREL("apparel", new MeasurementDimension[]{}),
-    SWIMWEAR("swimwear", new MeasurementDimension[]{}),
-    SKIRT("skirt", new MeasurementDimension[]{}),
-    SOCKS("socks", new MeasurementDimension[]{}),
-    HUMAN_FEMALE("girl", new MeasurementDimension[]{new MeasurementDimension<Integer>(MeasurementType.INSEAM), new MeasurementDimension<Integer>(MeasurementType.RISE)}),
-    HUMAN_MALE("guy", new MeasurementDimension[]{ new MeasurementDimension<Integer>(MeasurementType.NECK)});
+    PANTS(true, "pants", new MeasurementDimension[]{new MeasurementDimension<Integer>(MeasurementType.INSEAM), new MeasurementDimension<Integer>(MeasurementType.RISE)}),
+    DRESS(true, "dress", new MeasurementDimension[]{}),
+    BLAZER(true, "blazer", new MeasurementDimension[]{}),
+    ACCESSORY(true, "accessory", new MeasurementDimension[]{}),
+    OUTERWEAR(true, "outerwear", new MeasurementDimension[]{}),
+    SHIRT(true, "shirt", new MeasurementDimension[]{}),
+    SWEATER(true, "sweater", new MeasurementDimension[]{}),
+    SHORTS(true, "shorts", new MeasurementDimension[]{}),
+    APPAREL(true, "apparel", new MeasurementDimension[]{}),
+    SWIMWEAR(true, "swimwear", new MeasurementDimension[]{}),
+    SKIRT(true, "skirt", new MeasurementDimension[]{}),
+    SOCKS(true, "socks", new MeasurementDimension[]{}),
+    HUMAN_FEMALE(false, "girl", new MeasurementDimension[]{new MeasurementDimension<Integer>(MeasurementType.INSEAM), new MeasurementDimension<Integer>(MeasurementType.RISE)}),
+    HUMAN_MALE(false, "guy", new MeasurementDimension[]{ new MeasurementDimension<Integer>(MeasurementType.NECK)});
 
     public String displayName;
+    public boolean isClothing;
     public MeasurementDimension[] relevantDimensions;
 
-    ClothingType(String displayName, MeasurementDimension[] relevantTypes) {
+    ClothingType(boolean isClothing, String displayName, MeasurementDimension[] relevantTypes) {
         this.displayName = displayName;
         this.relevantDimensions = relevantTypes;
+        this.isClothing = isClothing;
     }
 }
