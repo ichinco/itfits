@@ -12,6 +12,7 @@
     <g:each in="${outfits}" var="outfit">
         <g:link controller="outfit" action="view" params="[outfitId:outfit.id]">${outfit.name}</g:link>
         <g:link controller="outfit" action="create" params="[outfitId:outfit.id]">edit</g:link>
+        <g:link controller="outfit" action="deleteOutfit" params="[outfitId:outfit.id, userId:user.id]">delete</g:link>
         <br />
     </g:each>
     <g:link controller="outfit" action="create">Create new Outfit</g:link>

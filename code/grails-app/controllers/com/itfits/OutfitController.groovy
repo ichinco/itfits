@@ -50,7 +50,13 @@ class OutfitController {
         List<Integer> clothingIds = params.clothing ? params.clothing.split(",").collect({Integer.parseInt(it)}) : []
         String name = params.name;
         String description = params.description;
-        outfitService.createOutfit(userId, clothingIds, name, description);
+        def outfit
+        if (params.outfitId){
+            outfit = Outfit.get(params.outfitId)
+        } else {
+            outfit = new Outfit()
+        }
+        outfitService.createOutfit(outfit, userId, clothingIds, name, description);
         redirect(controller:"user", action:"dashboard")
     }
 
@@ -65,5 +71,6 @@ class OutfitController {
         int userId = Integer.parseInt(params.userId);
 
         outfitService.deleteOutfit(outfitId, userId);
+        redirect(controller:"user", action:"dashboard")
     }
 }

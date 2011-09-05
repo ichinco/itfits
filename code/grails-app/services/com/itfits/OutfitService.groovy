@@ -4,8 +4,7 @@ class OutfitService {
 
     static transactional = true
 
-    def createOutfit(long userId, List<Integer> clothes, String name, String description) {
-        Outfit outfit = new Outfit();
+    def createOutfit(Outfit outfit, long userId, List<Integer> clothes, String name, String description) {
         outfit.cloths = clothes.collect { Clothing.get(it) }
         outfit.description = description;
         outfit.name = name;

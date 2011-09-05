@@ -15,6 +15,7 @@
   <body>
     <g:form controller="outfit" action="createOutfit" method="POST">
         <input type="hidden" name="userId" value="${user.id}" />
+        <g:hiddenField name="outfitId" value="${outfit.id}" />
         name: <input type="text" name="name" value="${outfit.name}" /> <br />
         description: <input type="text" name="description" value="${outfit.description}" />  <br />
         tags: <g:textField name="tags" value="${outfit.tags?.collect {it.tag}?.join(' ')}" /> <br />
