@@ -5,44 +5,39 @@
 test page for CSS building
 </title>
 <link rel="stylesheet" type="text/css" href="css/thumbs.css">
+<link rel="stylesheet" type="text/css" href="css/quickview.css">
 <style>
 
 html {
    font-family: helvetica;
    font-size: 12px;
-   color: black; 
+   color: black;
+   background-color: white;
 }
 
-.qVButton
+body
+{
+   margin: 0px;
+   width: 100%;
+   height: 100%;
+}
+
+.shade
 {
    position: absolute;
-   background-color: RGB(0, 140, 190);
-   color: white;
-   font-weight: 600;
-   text-align: center;
-   cursor: pointer;
-   display: none;
-
-   padding-top: 8px;
-
-   -webkit-border-radius: 3px;
-   -moz-border-radius: 3px;
-   border-radius: 3px;
+   top  : 0px;
+   left : 0px;
+   width: 100%;
+   height: 100%;
+   background-color: #fff;
 
    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=65)";
    filter: alpha(opacity=65);
    -moz-opacity:0.65;
    -khtml-opacity: 0.65;
    opacity: 0.65;
-}
 
-.qVButton:hover
-{
-   -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
-   filter: alpha(opacity=90);
-   -moz-opacity:0.9;
-   -khtml-opacity: 0.9;
-   opacity: 0.9;
+   //display: none;
 }
 
 </style>
@@ -75,6 +70,18 @@ function _main()
       function(evt){
 	 $(this).children(".qVButton").css("display", "none");
       });
+
+
+}
+
+function showScreen()
+{
+   $('div.screen').css({"display": "block", "z-index": "200"});
+}
+
+function hideScreen()
+{
+   $('div.screen').css("display", "none");
 }
 
 $(document).ready(_main);
@@ -169,5 +176,29 @@ $(document).ready(_main);
 
 </div>
 
+<div class="shade"></div>
+
+<div class="qVPanel">
+   <div class="qVPanelBG"></div>
+   <div class="qPanelTitle">moonlight creek cardigan</div>
+   <div class="imageWrap qItemImage">
+      <div class="subImageWrap subQItemImage">
+	 <img class="qItemImage" 
+	    src="http://a1.zassets.com/images/z/1/6/1/1615593-p-2x.jpg">
+      </div>
+   </div>
+   <div class="qVMidPanel">
+      <div class="qVItemBrand">Free People</div>
+      <div class="qVItemPrice costOld">$108.00</div>
+      <div class="qVItemPrice costSale">$86.40</div>
+      <div class="qVItemStars rateStars"></div>
+
+      <div class="qVItemTabs tabs"></div>
+      <div class="qVButtons toolbar"></div>
+
+      <div class="qVBuyItButton multiAction">I WANT IT</div>
+   </div>
+   <div class="qVPanelSidePanel"></div>
+</div>
 </body>
 </html>

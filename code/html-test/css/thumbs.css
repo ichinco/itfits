@@ -1,9 +1,5 @@
 <!--css-->
-body {
-   font-family: helvetica;
-   font-size: 12px;
-   color: black; 
-}
+
 img { border-width: 0px; }
 a { text-decoration: none; color: inherit; }
 
@@ -69,4 +65,22 @@ div.container
    width: 800px;
    border: #ddd dotted 1px;
    text-align: center;
+}
+
+div.imageWrap
+{
+   display: inline-block;
+   overflow: hidden;
+}
+
+.costOld
+{
+   text-decoration: line-through;
+   color: #aaa;
+}
+
+.costSale
+{
+   color: RGB(0, 140, 190);
+   font-size: 14px;
 }
