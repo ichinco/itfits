@@ -20,7 +20,7 @@ class SearchController {
     def search = {
         def clothingType = params.clothingType == "all" ? null : ClothingType.getByDisplayName(params.clothingType)
         def occasion = params.occasion == "all" ? null : VoteType.findByNameAndType(params.occasion,"occasion")
-        def style = params.style == "all" ? null : Style.findByNameAndType(params.style,"style")
+        def style = params.style == "all" ? null : VoteType.findByNameAndType(params.style,"style")
         def price = params.price
         def lowPrice = Integer.MIN_VALUE
         def highPrice = Integer.MAX_VALUE
