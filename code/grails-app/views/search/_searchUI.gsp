@@ -21,6 +21,7 @@
         <div class="formblock">
           <div class="label">clothing type</div>
             <select name="clothingType">
+                <option>all</option>
                 <g:each in="${ClothingType.values()}">
                     <g:if test="${it.isClothing}">
                         <option>${it.displayName}</option>
