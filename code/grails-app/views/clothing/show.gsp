@@ -42,9 +42,9 @@
         </g:if>
     </div>
 
-  <g:link controller="outfit" action="add" params="[clothing:clothing.id]">Add to an outfit</g:link>
 
   <g:if test="${user}">
+      <g:link controller="outfit" action="add" params="[clothing:clothing.id]">Add to an outfit</g:link>
       <br />
       <g:link controller="clothingContribution" action="owned" params="[clothingId:clothing.id, userId:user.id, size:0]">I own this!</g:link>
   </g:if>
@@ -58,6 +58,7 @@
         <g:render template="/voting/vote" model="['elements' : occasions, 'type':'occasion', 'title':'I\'d wear this to...', 'clothingId':clothing.id]" />
         <br />
         <g:render template="/voting/vote" model="['elements' : styles, 'type':'style', 'title':'The style is:', 'clothingId': clothing.id]"/>
+        <br />
   </div>
 
   <div>

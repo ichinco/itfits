@@ -1,5 +1,7 @@
 package com.itfits
 
+import grails.util.GrailsConfig
+
 class OutfitController {
 
     def outfitService
@@ -19,6 +21,14 @@ class OutfitController {
 
         def model = [:]
         model.outfit = outfit
+        def recentlyViewedItems =  session.recentlyViewedClothes
+        if (recentlyViewedItems){
+            model.recentlyViewed = recentlyViewedItems.split(",").collect({
+                Clothing.get(Integer.parseInt(it))
+            })
+        } else {
+            model.recentlyViewed = []
+        }
 
         return model
     }

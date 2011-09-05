@@ -109,16 +109,15 @@ class ClothingController {
             }
         }
 
-        def recentlyViewedCookie = g.cookie(name: GrailsConfig.itfits.cookie.recentlyViewedClothes)
+        def recentlyViewedCookie = session.recentlyViewedClothes
         if (recentlyViewedCookie){
             List<String> array = recentlyViewedCookie.split(",").toList()
             array.removeAll(clothing.id.toString())
-            recentlyViewedCookie = clothing.id + "," + array.join(",")
+            recentlyViewedCookie = clothing.id.toString() + "," + array.join(",")
         } else {
-            recentlyViewedCookie = clothing.id
+            recentlyViewedCookie = clothing.id.toString()
         }
-        def cookie = new Cookie(GrailsConfig.itfits.cookie.recentlyViewedClothes, recentlyViewedCookie)
-        response.addCookie(cookie)
+        session.recentlyViewedClothes = recentlyViewedCookie
 
         def model = [:]
         model["clothing"] = clothing

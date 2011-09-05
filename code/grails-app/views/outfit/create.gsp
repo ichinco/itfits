@@ -19,6 +19,7 @@
         description: <input type="text" name="description" value="${outfit.description}" />  <br />
         tags: <g:textField name="tags" value="${outfit.tags?.collect {it.tag}?.join(' ')}" /> <br />
         <input type="hidden" name="clothingIds" value="outfit.clothes?.collect{it.id}.join(',')" />
+        <g:render template="/user/clothBar" model="['clothing':recentlyViewed]" />
         <input type="submit" value="Done!" />
     </g:form>
   </body>
