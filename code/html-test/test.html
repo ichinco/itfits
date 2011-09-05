@@ -54,7 +54,6 @@ function _main()
    var qVButton = $("<div>quick look</div>");
    qVButton.addClass("qVButton");
 
-
    var qVButtonWidth = 95;
    var qVButtonHeight = 20;
 
@@ -67,17 +66,17 @@ function _main()
       "top": String((thumbHeight - qVButtonHeight)/2) + "px",
       "left" : String((thumbWidth - qVButtonWidth)/2) + "px"});
 
-   $('.smallThumb').append(qVButton);
+   $("div.smallThumb").append(qVButton);
 
-   $('.smallThumb').hover(
+   $('div.smallThumb').hover(
       function(evt){
 	 $(this).children(".qVButton").css("display", "block");
       },
       function(evt){
 	 $(this).children(".qVButton").css("display", "none");
       });
-
 }
+
 $(document).ready(_main);
 </script>
 </head>
