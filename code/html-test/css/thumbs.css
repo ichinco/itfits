@@ -1,0 +1,72 @@
+<!--css-->
+body {
+   font-family: helvetica;
+   font-size: 12px;
+   color: black; 
+}
+img { border-width: 0px; }
+a { text-decoration: none; color: inherit; }
+
+div.label
+{
+   margin-left: 8px;
+   text-align: left;
+}
+
+div.smallThumb
+{
+   display : inline-block;
+   position: relative;
+   height: 330px;
+   width: 180px;
+   overflow: hidden;
+   border: white solid 1px;
+   
+   // non-CSS 2 stuff here
+   -webkit-border-radius: 5px; 
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+}
+
+div.smallThumb:hover
+{
+   border: #ddd solid 1px;
+}
+
+div.subSmallThumb
+{
+   margin: 5px 0px 8px -250px;
+
+   position: relative;
+   left: 90px;
+   height: 250px;
+   width : 500px;
+}
+img.smallThumb
+{
+   height: 250px;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+div.thumbBrand { margin-left: 15px; }
+div.thumbItem { margin-left: 15px; font-weight: 600; }
+div.thumbCostOld { 
+   margin-left: 15px; 
+   font-size: 11px; 
+   text-decoration: line-through;
+   color: #aaa;
+}
+div.thumbCostSale 
+{ 
+   margin-left: 15px;
+   color      : RGB(0, 140, 190);
+}
+
+div.container
+{
+   width: 800px;
+   border: #ddd dotted 1px;
+   text-align: center;
+}
