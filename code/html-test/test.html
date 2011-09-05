@@ -1,82 +1,85 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
-   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
 <title>
 test page for CSS building
 </title>
+<link rel="stylesheet" type="text/css" href="css/thumbs.css">
 <style>
-html
-{
+
+html {
    font-family: helvetica;
    font-size: 12px;
    color: black; 
 }
 
-img { border-width: 0px; }
-a { text-decoration: none; color: inherit; }
-
-div.label
+.qVButton
 {
-   margin-left: 8px;
-   text-align: left;
-}
-
-div.smallThumb
-{
-   display : inline-block;
-   position: relative;
-   height: 320px;
-   width: 180px;
-   overflow: hidden;
-   border: white solid 1px;
-}
-
-div.smallThumb:hover
-{
-   border: #aaa solid 1px;
-}
-
-div.subSmallThumb
-{
-   margin: 5px 0px 8px -250px;
-
-   position: relative;
-   left: 90px;
-   height: 250px;
-   width : 500px;
-}
-img.smallThumb
-{
-   height: 250px;
-   display: block;
-   margin-left: auto;
-   margin-right: auto;
-}
-
-div.thumbBrand { margin-left: 15px; }
-div.thumbItem { margin-left: 15px; font-weight: 600; }
-div.thumbCostOld { 
-   margin-left: 15px; 
-   font-size: 11px; 
-   text-decoration: line-through;
-   color: #aaa;
-}
-div.thumbCostSale 
-{ 
-   margin-left: 15px;
-   color      : RGB(0, 140, 190);
-}
-
-div.container
-{
-   width: 800px;
-   border: #ddd dotted 1px;
+   position: absolute;
+   background-color: RGB(0, 140, 190);
+   color: white;
+   font-weight: 600;
    text-align: center;
+   cursor: pointer;
+   display: none;
+
+   padding-top: 8px;
+
+   -webkit-border-radius: 3px;
+   -moz-border-radius: 3px;
+   border-radius: 3px;
+
+   -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=65)";
+   filter: alpha(opacity=65);
+   -moz-opacity:0.65;
+   -khtml-opacity: 0.65;
+   opacity: 0.65;
 }
+
+.qVButton:hover
+{
+   -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+   filter: alpha(opacity=90);
+   -moz-opacity:0.9;
+   -khtml-opacity: 0.9;
+   opacity: 0.9;
+}
+
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"
    type="text/javascript"></script>
+<script type="text/javascript">
+function _main()
+{
+   var qVButton = $("<div>quick look</div>");
+   qVButton.addClass("qVButton");
+
+
+   var qVButtonWidth = 95;
+   var qVButtonHeight = 20;
+
+   var thumbHeight = $('.smallThumb').height() - 50;
+   var thumbWidth = $('.smallThumb').width();
+
+   qVButton.css({
+      "width" : String(qVButtonWidth) + "px",
+      "height" : String(qVButtonHeight) + "px",
+      "top": String((thumbHeight - qVButtonHeight)/2) + "px",
+      "left" : String((thumbWidth - qVButtonWidth)/2) + "px"});
+
+   $('.smallThumb').append(qVButton);
+
+   $('.smallThumb').hover(
+      function(evt){
+	 $(this).children(".qVButton").css("display", "block");
+      },
+      function(evt){
+	 $(this).children(".qVButton").css("display", "none");
+      });
+
+}
+$(document).ready(_main);
+</script>
 </head>
 <body>
 <!-- quick view -->
