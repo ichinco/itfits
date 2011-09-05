@@ -20,6 +20,8 @@ itfits.amazon.maxPage = 400
 itfits.amazon.searchUrl = "http://ecs.amazonaws.com/onca/xml?Service=AWSECommerceService&AssociateTag=${itfits.amazon.associateTag}&AWSAccessKeyId=${itfits.amazon.accessKeyId}&Operation=ItemSearch&Version=${itfits.amazon.apiVersion}&SearchIndex=Apparel&BrowseNode=1036682&ResponseGroup=[responseGroup]&ItemPage=[page]"
 itfits.amazon.signaturePrepend="GET\nwebservices.amazon.com\n/onca/xml\n"
 
+itfits.cookie.recentlyViewedClothes = "recentlyViewedClothes"
+
 // these are only sandbox ids, need to be overridden in production
 itfits.ebay.devId = "376bfa95-db27-4280-868c-70bba522ebdc"
 itfits.ebay.appId = "DeniseIc-d127-46a3-86cb-4a24266dcde5"

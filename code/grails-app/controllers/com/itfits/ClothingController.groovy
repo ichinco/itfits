@@ -1,6 +1,8 @@
 package com.itfits
 
 import grails.plugins.springsecurity.Secured
+import javax.servlet.http.Cookie
+import grails.util.GrailsConfig
 
 class ClothingController {
 
@@ -106,6 +108,17 @@ class ClothingController {
                     break;
             }
         }
+
+        def recentlyViewedCookie = g.cookie(name: GrailsConfig.itfits.cookie.recentlyViewedClothes)
+        if (recentlyViewedCookie){
+            List<String> array = recentlyViewedCookie.split(",").toList()
+            array.removeAll(clothing.id.toString())
+            recentlyViewedCookie = clothing.id + "," + array.join(",")
+        } else {
+            recentlyViewedCookie = clothing.id
+        }
+        def cookie = new Cookie(GrailsConfig.itfits.cookie.recentlyViewedClothes, recentlyViewedCookie)
+        response.addCookie(cookie)
 
         def model = [:]
         model["clothing"] = clothing

@@ -5,28 +5,38 @@ class SearchService {
     static transactional = true
     def recommendationService
 
-    def findBy(User user, Occasion occasion, Style style, ClothingType type,
+    def findBy(User user, VoteType occasion, VoteType style, ClothingType clothingType,
                double lowPrice, double highPrice, ClothingBrand brand) {
         def criteria = Clothing.createCriteria()
-        def clothes = criteria {
-            between("price", lowPrice, highPrice)
-            eq("brand", brand)
-            eq("type", type)
-            votes {
-                and {
-                    eq("type",occasion)
-                    gt("upvotes", "downvotes")
-                }
+        def clothes = criteria.list {
+//            between("price", lowPrice, highPrice)
+            if (brand) {
+                eq("brand", brand)
             }
-            votes {
-                and {
-                    eq("type", style)
-                    gt("upvotes", "downvotes")
+            if (clothingType) {
+                eq("type", clothingType)
+            }
+            if (occasion){
+                 votes {
+                    type {
+                       eq("id", occasion.id)
+                       eq("type", "occasion")
+                    }
+                    gtProperty("upvotes","downvotes")
+                 }
+            }
+            if (style) {
+                votes {
+                    type {
+                        eq("id", style.id)
+                        eq("type", "style")
+                    }
+                    gtProperty("upvotes","downvotes")
                 }
             }
         }
 
-        clothes.sort({recommendationService.getProbabilityUserLikesClothes(user, it)})
+//        clothes.sort({recommendationService.getProbabilityUserLikesClothes(user, it)})
         return clothes
     }
 

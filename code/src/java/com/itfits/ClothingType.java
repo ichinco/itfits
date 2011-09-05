@@ -32,4 +32,14 @@ public enum ClothingType {
         this.relevantDimensions = relevantTypes;
         this.isClothing = isClothing;
     }
+
+    public static ClothingType getByDisplayName(String name){
+        for (ClothingType type : ClothingType.values()){
+            if (type.displayName.equals(name)){
+                return type;
+            }
+        }
+
+        return null;
+    }
 }
