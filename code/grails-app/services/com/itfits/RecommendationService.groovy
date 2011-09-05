@@ -101,4 +101,12 @@ class RecommendationService {
         return (int) query.uniqueResult();
     }
 
+    def getRepresentativeOutfit(Occasion occasion, Style style){
+        VoteRecord recentOccasionVotes = VoteRecord.findByDateCreatedBetweenAndType(new Date()-7, new Date(), occasion)
+        VoteRecord recentStyleVotes = VoteRecord.findByDateCreatedBetweenAndType(new Date()-7, new Date(), style)
+        VoteRecord recentClothingVotes = VoteRecord.findByDateCreatedBetweenAndType(new Date()-7, new Date(), clothing)
+
+
+    }
+
 }
