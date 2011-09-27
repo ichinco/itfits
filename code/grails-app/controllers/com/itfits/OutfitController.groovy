@@ -6,7 +6,13 @@ class OutfitController {
 
     def outfitService
 
-    def index = { }
+    def index = {
+        def model = [:]
+        model.outfits = Outfit.list()
+
+        render(view:"/outfit/index", model:model)
+    }
+
     def create = {
         Outfit outfit;
         if (params.outfitId){

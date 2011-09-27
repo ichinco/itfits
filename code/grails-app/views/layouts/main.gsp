@@ -40,7 +40,7 @@
               <g:link controller="search">shop</g:link> <br />
             </div>
             <div class="sidebarIcon ${ params.controller == 'outfit' ? 'selected' : ''}" >
-              <g:link controller="outfits">outfits</g:link> <br />
+              <g:link controller="outfit">outfits</g:link> <br />
             </div>
         </div>
 
