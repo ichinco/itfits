@@ -4,7 +4,7 @@ class OutfitVoteService {
 
     static transactional = true
 
-    def getVotingElement(String type, String elementId, String outfitId) {
+    def getVotingElement(String type, String elementId, String outfitId, User createdBy) {
         def outfit = Outfit.get(Long.parseLong(outfitId))
         def voteType = VoteType.findByNameAndType(elementId,type)
         if (!voteType){
@@ -19,6 +19,7 @@ class OutfitVoteService {
             outfitVoteRecord = new OutfitVoteRecord()
             outfitVoteRecord.outfit = outfit;
             outfitVoteRecord.type = voteType;
+            outfitVoteRecord.createdBy = createdBy
             outfitVoteRecord.save()
         }
 
@@ -26,7 +27,7 @@ class OutfitVoteService {
     }
 
     def incrementVote(String type, String catName, String outfitId, User user ){
-        def record = getVotingElement(type, catName, outfitId);
+        def record = getVotingElement(type, catName, outfitId, user);
         def userUpvoted = user.outfitUpvoted.contains(record)
         if (!userUpvoted){
             record.upvotes++
@@ -38,7 +39,7 @@ class OutfitVoteService {
     }
 
     def decrementVote(String type, String catName, String outfitId, User user ){
-        def record = getVotingElement(type, catName, outfitId);
+        def record = getVotingElement(type, catName, outfitId, user);
         def userDownvoted = user.outfitDownvoted.contains(record)
         if (!userDownvoted){
             record.downvotes++

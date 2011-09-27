@@ -8,6 +8,7 @@ class OutfitVoteRecord {
     int downvotes
     Date dateCreated
     Date lastUpdated
+    User createdBy
 
     static constraints = {
     }
