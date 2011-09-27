@@ -27,6 +27,8 @@ class User {
         contributions : UserClothingContribution,
         upvoted : VoteRecord,
         downvoted : VoteRecord,
+        outfitUpvoted : OutfitVoteRecord,
+        outfitDownvoted : OutfitVoteRecord,
         outfits : Outfit
     ]
 
